@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer("age");
             $table->string('commune');
             $table->string('field');
-            $table->integer('roll');
+            $table->integer('role');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
