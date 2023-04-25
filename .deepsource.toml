@@ -1,0 +1,19 @@
+version = 1
+
+[[analyzers]]
+name = "javascript"
+
+[[analyzers]]
+name = "sql"
+
+[[analyzers]]
+name = "php"
+
+[[analyzers]]
+name = "test-coverage"
+
+[[transformers]]
+name = "prettier"
+
+[[transformers]]
+name = "standardjs"
