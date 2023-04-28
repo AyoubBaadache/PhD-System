@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Admin.AdminDash');
 });
 
 Route::middleware([
@@ -31,7 +32,11 @@ Route::middleware([
 Route::prefix('admin')->group(function () {
     Route::view('adminDash', 'Admin.AdminDash')->name('adminDash');
     Route::view('announcements', 'Admin.Announcements')->name('announcements');
-    Route::view('users', 'Admin.UsersManagement')->name('users');
+    Route::resource("/users",UsersController::class);
+    Route::post('/admin/users/{user_id}', [UsersController::class, 'update']);
+    Route::post('/admin/users/delete_user', [UsersController::class, 'destroy']);
+
+
 });
 //End Admin
 
@@ -66,5 +71,5 @@ Route::prefix('cfd')->group(function () {
     Route::view('assignTeachers', 'CFD.AssignTeacher')->name('assignTeachers');
     Route::view('announcements', 'CFD.Announcements')->name('announcements');
 });
-//End CFDphp
+//End CFD
 
