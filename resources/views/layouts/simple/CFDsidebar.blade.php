@@ -18,7 +18,7 @@
                                                                           aria-hidden="true"></i></div>
                 </li>
                 <li class="sidebar-list" style="margin-top:100px "><a class="sidebar-link sidebar-title link-nav"
-                                                                      href="{{  url('cfd/DashCFD')}}">
+                                                                      href="{{  url('cfd/home')}}">
                         <span><i class="fa fa-home" style="margin-right: 10px"></i></span>
                         <span>Dashboard</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"

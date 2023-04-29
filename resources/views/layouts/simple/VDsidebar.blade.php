@@ -15,7 +15,7 @@
                     <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
                                                                           aria-hidden="true"></i></div>
                 </li>
-                <li class="sidebar-list" style="margin-top:100px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('vd/viceDeanDash')}}">
+                <li class="sidebar-list" style="margin-top:100px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('vd/home')}}">
                         <span><i class="fa fa-graduation-cap" style="margin-right: 10px"></i></span>
                         <span>Dashboard</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('vd/code')}}">

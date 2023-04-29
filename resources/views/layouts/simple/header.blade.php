@@ -51,17 +51,34 @@
           </div>
         </li>
         <li class="profile-nav onhover-dropdown pe-0 py-0">
-          <div class="media profile-media"><img class="b-r-10" src="{{ asset('assets/images/dashboard/profile.png') }}" alt="">
-            <div class="media-body"><span>Emay Walter</span>
-              <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
+            <div class="media profile-media"><img  style="height: 35px; width: 35px" class="b-r-10" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->fname }}">
+            <div class="media-body"><span>{{ Auth::user()->fname }} {{ Auth::user()->lname }}</span>
+                @switch(Auth::user()->role )
+                    @case('0')
+                        <p class="mb-0 font-roboto">Admin<i class="middle fa fa-angle-down"></i></p>
+                        @break
+                    @case('1')
+                        <p class="mb-0 font-roboto">Vice Dean<i class="middle fa fa-angle-down"></i></p>
+                        @break
+                    @case('2')
+                        <p class="mb-0 font-roboto"> Head of CFD<i class="middle fa fa-angle-down"></i></p>
+                        @break
+                    @case('3')
+                        <p class="mb-0 font-roboto">Teacher<i class="middle fa fa-angle-down"></i></p>
+                        @break
+                    @case('4')
+                        <p class="mb-0 font-roboto">Participant<i class="middle fa fa-angle-down"></i></p>
+                        @break
+                @endswitch
             </div>
           </div>
           <ul class="profile-dropdown onhover-show-div">
-            <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
-            <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
-            <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
-            <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
-            <li><a href="#"><i data-feather="log-in"> </i><span>Log in</span></a></li>
+            <li><a href="{{ route('profile.show') }}"><i data-feather="user"></i><span>Account </span></a></li>
+
+              <form method="POST" action="{{ url('logout') }}" id="form">
+                  @csrf
+                  <li> <a  href="javascript:{}" onclick="document.getElementById('form').submit(); return false;" > <i data-feather="log-out"></i>{{ __('Log Out') }}</a></li>
+              </form>
           </ul>
         </li>
       </ul>

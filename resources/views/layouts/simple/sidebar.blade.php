@@ -13,7 +13,7 @@
         <nav class="sidebar-main">
             <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
             <ul class="sidebar-links" id="simple-bar">
-                <li class="back-btn"><a href="{{  url('admin/adminDash')}}"><img class="img-fluid"
+                <li class="back-btn"><a href="{{  url('admin/home')}}"><img class="img-fluid"
                                                                                  src="{{ asset('assets/images/logo/logo-icon.png') }}"
                                                                                  alt=""></a>
                     <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\MY_Controller;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Admin.AdminDash');
+    return view('welcome');
 });
 
 Route::middleware([
@@ -24,13 +27,14 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('Admin.AdminDash');
-    })->name('Admin.AdminDash');
+        return view('dashboard');
+    })->name('dashboard');
 });
+Route::get('/check',[MY_Controller::class,'index']);
 
 //Admin routes
 Route::prefix('admin')->group(function () {
-    Route::view('adminDash', 'Admin.AdminDash')->name('adminDash');
+    Route::view('home', 'Admin.AdminDash')->name('home');
     Route::view('announcements', 'Admin.Announcements')->name('announcements');
     Route::resource("/users",UsersController::class);
     Route::post('/admin/users/{user_id}', [UsersController::class, 'update']);
@@ -38,11 +42,18 @@ Route::prefix('admin')->group(function () {
 
 
 });
+
+Route::controller(ExcelController::class)->group(function(){
+    Route::post('/admin/users/importP', 'importP')->name('admin.users.importP');
+    Route::post('/admin/users/importT', 'importT')->name('admin.users.importT');
+});
+   Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+         ->name('logout');
 //End Admin
 
 //Vice Dean routes
 Route::prefix('vd')->group(function () {
-    Route::view('viceDeanDash', 'ViceDean.viceDeanDash')->name('DashVD');
+    Route::view('home', 'ViceDean.viceDeanDash')->name('DashVD');
     Route::view('code', 'ViceDean.code')->name('code');
     Route::view('announcementsList', 'ViceDean.announcementsList')->name('announce');
     Route::view('createAnnouncements', 'ViceDean.AnnounceCreate')->name('createAnnouncements');
@@ -66,7 +77,7 @@ Route::prefix('participant')->group(function () {
 
 //CFD routes
 Route::prefix('cfd')->group(function () {
-    Route::view('DashCFD', 'CFD.DashCFD')->name('DashCFD');
+    Route::view('home', 'CFD.DashCFD')->name('DashCFD');
     Route::view('grades', 'CFD.shareGrades')->name('grades');
     Route::view('assignTeachers', 'CFD.AssignTeacher')->name('assignTeachers');
     Route::view('announcements', 'CFD.Announcements')->name('announcements');

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Imports\UsersImport;
 Use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
@@ -48,4 +50,5 @@ class UsersController extends Controller
         return back ();
 
     }
+
 }

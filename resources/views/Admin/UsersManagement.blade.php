@@ -26,7 +26,8 @@
                 <div class="card">
                     <div class="card-header pb-0 card-no-border">
                         <a class="btn btn-pill btn-light" href="{{url('/users/create')}}" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="font-size: 15px;display: inline-block"><i data-feather="user-plus" style="height: 20px; margin-right: 15px;align-items: center"></i> Add User</a>
-                        <a class="btn btn-pill  btn-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2" style="font-size: 15px;display: inline-block"><i data-feather="file-plus" style="height: 20px; margin-right: 15px;align-items: center"></i>Add Users</a>
+                        <a class="btn btn-pill  btn-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2" style="font-size: 15px;display: inline-block"><i data-feather="file-plus" style="height: 20px; margin-right: 15px;align-items: center"></i>Add Participants</a>
+                        <a class="btn btn-pill  btn-light" type="button" data-bs-toggle="modal" data-bs-target="#TeacherM" style="font-size: 15px;display: inline-block"><i data-feather="file-plus" style="height: 20px; margin-right: 15px;align-items: center"></i>Add Teachers</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -186,34 +187,71 @@
     </div>
     <!--Add user Model-->
 
-    <!--Add users Model-->
+    <!--Add Participant Model-->
     <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add Users</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label">Upload File</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" type="file">
+            <form action="{{url("/admin/users/importP")}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Participants</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3 row">
+                                    <label class="col-sm-3 col-form-label">Upload File</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="file" id="file" type="file">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="card-footer text-end">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
+                    </div>
                 </div>
-                <div class="card-footer text-end">
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                    <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
-    <!--Add users Model-->
+    <!--Add Participants Model-->
+
+    <!--Add Teachers Model-->
+    <div class="modal fade" id="TeacherM" tabindex="-1" role="dialog" aria-labelledby="TeacherM" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <form action="{{url("/admin/users/importT")}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Participants</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3 row">
+                                    <label class="col-sm-3 col-form-label">Upload File</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="file" id="file" type="file">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Add Teachers Model-->
 
     <!--Modify Model-->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
