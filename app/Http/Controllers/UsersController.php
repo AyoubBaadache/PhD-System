@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class UsersController extends Controller
 {
     public function index(){
-        $user = user::all() -> whereNotIn ( 'role' , 0);;
+        $user = user::all() -> whereNotIn ( 'role' , 0);
         return view ("Admin.UsersManagement")->with('users',$user);
     }
     public

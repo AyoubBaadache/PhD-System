@@ -18,8 +18,14 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     public function update(User $user, array $input): void
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'fname' => [ 'string', 'max:255'],
+            'ar_fname' => [ 'string', 'max:255'],
+            'lname' => [ 'string', 'max:255'],
+            'ar_name' => [ 'string', 'max:255'],
+            'birthdate' => [ 'string', 'max:255'],
+            'commune' => [ 'string', 'max:255'],
+            'field' => ['string', 'max:255'],
+            'email' => [ 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
 
@@ -32,10 +38,17 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
-                'name' => $input['name'],
+                'fname' => $input['fname'],
+                'ar_fname' => $input['ar_fname'],
+                'lname' => $input['lname'],
+                'ar_lname' => $input['ar_lname'],
+                'birthdate' => $input['birthdate'],
+                'commune' => $input['commune'],
+                'field' => $input['field'],
                 'email' => $input['email'],
             ])->save();
         }
+
     }
 
     /**
@@ -46,8 +59,14 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     protected function updateVerifiedUser(User $user, array $input): void
     {
         $user->forceFill([
-            'name' => $input['name'],
+            'fname' => $input['fname'],
+            'ar_fname' => $input['ar_fname'],
+            'lname' => $input['lname'],
+            'ar_lname' => $input['ar_lname'],
+            'birthdate' => $input['birthdate'],
             'email' => $input['email'],
+            'commune' => $input['commune'],
+            'field' => $input['field'],
             'email_verified_at' => null,
         ])->save();
 

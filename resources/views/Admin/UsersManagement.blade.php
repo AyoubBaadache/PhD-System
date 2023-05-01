@@ -50,7 +50,7 @@
                                     <td>{{$item->fname}}</td>
                                     <td>{{$item->ar_fname}}</td>
                                     <td>{{$item->lname}}</td>
-                                    <td>{{$item->ar_fname}}</td>
+                                    <td>{{$item->ar_lname}}</td>
                                     <td>{{$item->birthdate}}</td>
                                     <td>{{$item->email}}</td>
                                     @switch($item->role)

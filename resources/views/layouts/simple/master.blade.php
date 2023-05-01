@@ -11,6 +11,11 @@
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
     <title>Phd Management</title>
     <!-- Google font-->
+      <link rel="preconnect" href="https://fonts.bunny.net">
+      <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+      <!-- Scripts -->
+      @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
     @include('layouts.simple.css')
@@ -40,7 +45,7 @@
                 </div>
                 <div class="col-6">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/admindash')}}">
+                    <li class="breadcrumb-item"><a href="{{ url('admin/home')}}">
                       <svg class="stroke-icon">
                         <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
                       </svg></a></li></li>

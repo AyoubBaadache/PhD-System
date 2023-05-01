@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Announcement_controller;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\MY_Controller;
 use App\Http\Controllers\UsersController;
@@ -83,4 +84,8 @@ Route::prefix('cfd')->group(function () {
     Route::view('announcements', 'CFD.Announcements')->name('announcements');
 });
 //End CFD
+
+
+//*****************************Announcement*******************//
+Route::resource("/announcement",Announcement_controller::class);
 

@@ -1,28 +1,19 @@
 <x-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+       <h2 style="font-size: 25px;font-weight: bold;color: #d2d0d6">Profile Information</h2>
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
     </x-slot>
-
     <x-slot name="form">
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
+            <div x-data="{photoName: null, photoPreview: null}" class="col-span-8 sm:col-span-6">
                 <!-- Profile Photo File Input -->
                 <input type="file" class="hidden"
                        wire:model="photo"
                        x-ref="photo"
-                       x-on:change="
-                                    photoName = $refs.photo.files[0].name;
-                                    const reader = new FileReader();
-                                    reader.onload = (e) => {
-                                        photoPreview = e.target.result;
-                                    };
-                                    reader.readAsDataURL($refs.photo.files[0]);
-                            "/>
+                       x-on:change="photoName = $refs.photo.files[0].name;const reader = new FileReader();reader.onload = (e) => { photoPreview = e.target.result;};reader.readAsDataURL($refs.photo.files[0]);"/>
 
                 <x-label for="photo" value="{{ __('Photo') }}"/>
 
@@ -54,16 +45,45 @@
         @endif
 
         <!-- Name -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Name') }}"/>
-            <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name"/>
-            <x-input-error for="name" class="mt-2"/>
+        <div class="col-span-4 sm:col-span-2 form-group">
+            <label class="col-form-label" for="fname">First Name</label>
+            <input id="fname" name="fname" type="text" class="mt-1 block w-full form-control" wire:model.defer="state.fname" autocomplete="fname"/>
+            <x-input-error for="fname" class="mt-2"/>
         </div>
-
+        <div class="col-span-4 sm:col-span-2 form-group">
+            <label class="col-form-label" for="ar_fname">Arabic First Name</label>
+            <input id="ar_fname" name="ar_fname" type="text" class="mt-1 block w-full form-control" wire:model.defer="state.ar_fname" autocomplete="fname"/>
+            <x-input-error for="ar_fname" class="mt-2"/>
+        </div>
+        <div class="col-span-4 sm:col-span-2 form-group">
+            <label class="col-form-label" for="lname">last Name</label>
+            <input  id="lname" name="lname" type="text" class="mt-1 block w-full form-control" wire:model.defer="state.lname" autocomplete="lname"/>
+            <x-input-error for="lname" class="mt-2"/>
+        </div>
+        <div class="col-span-4 sm:col-span-2 form-group">
+            <label class="col-form-label" for="ar_lname">Arabic Last Name</label>
+            <input id="ar_lname" name="ar_lname" type="text" class="mt-1 block w-full form-control" wire:model.defer="state.ar_lname" autocomplete="ar_lname"/>
+            <x-input-error for="ar_lname" class="mt-2"/>
+        </div>
+        <div class="col-span-4 sm:col-span-2 form-group">
+            <label class="col-form-label" for="birthdate">Birthdate</label>
+            <input id="birthdate" name="birthdate" type="date" class="mt-1 block w-full form-control" wire:model.defer="state.birthdate" autocomplete="birthdate"/>
+            <x-input-error for="birthdate" class="mt-2"/>
+        </div>
+        <div class="col-span-4 sm:col-span-2 form-group">
+            <label class="col-form-label" for="commune">Commune</label>
+            <input id="commune" name="commune" type="text" class="mt-1 block w-full form-control" wire:model.defer="state.commune" autocomplete="commune"/>
+            <x-input-error for="commune" class="mt-2"/>
+        </div>
+        <div class="col-span-5 sm:col-span-3 form-group">
+            <label class="col-form-label" for="field" >Field</label>
+            <input id="field" name="field" type="text" class="mt-1 block w-full form-control" wire:model.defer="state.field" autocomplete="field" />
+            <x-input-error for="field" class="mt-2"/>
+        </div>
         <!-- Email -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="email" value="{{ __('Email') }}"/>
-            <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email"
+        <div class="col-span-5 sm:col-span-3 form-group">
+            <label class="col-form-label" for="email" value="{{ __('Email') }}">Email</label>
+            <input id="email" type="email" class="mt-1 block w-full form-control" wire:model.defer="state.email"
                      autocomplete="username"/>
             <x-input-error for="email" class="mt-2"/>
 
