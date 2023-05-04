@@ -3,6 +3,7 @@
 use App\Http\Controllers\Announcement_controller;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\MY_Controller;
+use App\Http\Controllers\Notification_controller;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -36,7 +37,6 @@ Route::get('/check',[MY_Controller::class,'index']);
 //Admin routes
 Route::prefix('admin')->group(function () {
     Route::view('home', 'Admin.AdminDash')->name('home');
-    Route::view('announcements', 'Admin.Announcements')->name('announcements');
     Route::resource("/users",UsersController::class);
     Route::post('/admin/users/{user_id}', [UsersController::class, 'update']);
     Route::post('/admin/users/delete_user', [UsersController::class, 'destroy']);
@@ -51,14 +51,16 @@ Route::controller(ExcelController::class)->group(function(){
    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
          ->name('logout');
 //End Admin
+Route::resource("users/announcements",Notification_controller::class);
 
 //Vice Dean routes
 Route::prefix('vd')->group(function () {
     Route::view('home', 'ViceDean.viceDeanDash')->name('DashVD');
     Route::view('code', 'ViceDean.code')->name('code');
-    Route::view('announcementsList', 'ViceDean.announcementsList')->name('announce');
-    Route::view('createAnnouncements', 'ViceDean.AnnounceCreate')->name('createAnnouncements');
-    Route::view('announcements', 'ViceDean.Announcements')->name('announcements');
+    Route::get("/announcementsList",[Announcement_controller::class,'show']);
+    Route::post('announcementsList/create', [Announcement_controller::class,'store']);
+    Route::post('announcementsList/{user_id}', [Announcement_controller::class, 'update']);
+    Route::delete('announcementsList/delete', [Announcement_controller::class, 'destroy']);
 });
 //End vice dean
 
@@ -84,8 +86,4 @@ Route::prefix('cfd')->group(function () {
     Route::view('announcements', 'CFD.Announcements')->name('announcements');
 });
 //End CFD
-
-
-//*****************************Announcement*******************//
-Route::resource("/announcement",Announcement_controller::class);
 

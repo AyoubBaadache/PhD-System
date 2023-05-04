@@ -18,7 +18,7 @@
                 <li class="sidebar-list" style="margin-top:100px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('teacher/grades')}}">
                         <span><i class="fa fa-graduation-cap" style="margin-right: 10px"></i></span>
                         <span>Grades</span></a></li>
-                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('teacher/announcements')}}">
+                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('users/announcements')}}">
                         <span><i data-feather="globe" style="margin-right: 10px"></i></span>
                         <span>Announcements</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="">

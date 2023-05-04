@@ -20,10 +20,8 @@ return new class extends Migration
             $table->string("starting time");
             $table->string("ending time");
             $table->integer("content");
-            $table->integer("files");
             $table->unsignedBigInteger("user_id");
             $table->foreign('user_id', 'user_fk_1001496')->references('id')->on('users');
-
 
         });
     }

@@ -187,7 +187,7 @@
     </div>
     <!--Add user Model-->
 
-    <!--Add Participant Model-->
+    <!--Add Participants Model-->
     <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <form action="{{url("/admin/users/importP")}}" method="POST" enctype="multipart/form-data">

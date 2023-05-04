@@ -1,5 +1,27 @@
+@switch(Auth::user()->role)
+    @case(0)
+{{$path = 'layouts.simple.master'}}
+        return $path
+        @break
+    @case(1)
+        {{ $path = 'layouts.simple.VDmaster'}}
+        @break
 
-@extends('layouts.simple.master')
+    @case(2)
+        {{ $path = 'layouts.simple.CFDmaster'}}
+        @break
+
+    @case(3)
+        {{ $path = 'layouts.simple.Teachermaster'}}
+        @break
+
+    @case(4)
+        {{ $path = 'layouts.simple.Participantmaster'}}
+        @break
+
+@endswitch
+@extends($path)
+
 @section('title', ' Profile')
 
 @section('css')

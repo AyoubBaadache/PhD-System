@@ -24,6 +24,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
+                    <form action="{{url('/vd/announcementsList')}}" method="post">
+                        {!! csrf_field() !!}
+
                     <div class="card-body">
                         <div class="form theme-form">
                             <div class="row">
@@ -89,6 +92,7 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('vd/announcementsList')}}">
                         <span><i class="fa fa-list" style="margin-right: 10px"></i></span>
                         <span>Announcements List</span></a></li>
-                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('vd/announcements')}}">
+                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('users/announcements')}}">
                         <span><i data-feather="globe" style="margin-right: 10px"></i></span>
                         <span>Announcements</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="">
