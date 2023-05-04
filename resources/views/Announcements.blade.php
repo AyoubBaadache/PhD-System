@@ -64,7 +64,6 @@
                                                                 <span class="info-success"> {{$Announcement->priority}}</span>
                                                                 @break
                                                         @endswitch
-
                                                         </i>
                                                 </div>
                                             </div>

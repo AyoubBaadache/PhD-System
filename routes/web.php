@@ -4,6 +4,7 @@ use App\Http\Controllers\Announcement_controller;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\MY_Controller;
 use App\Http\Controllers\Notification_controller;
+use App\Http\Controllers\Secret_generator_controller;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -56,7 +57,7 @@ Route::resource("users/announcements",Notification_controller::class);
 //Vice Dean routes
 Route::prefix('vd')->group(function () {
     Route::view('home', 'ViceDean.viceDeanDash')->name('DashVD');
-    Route::view('code', 'ViceDean.code')->name('code');
+    Route::resource('/code', Secret_generator_controller::class);
     Route::get("/announcementsList",[Announcement_controller::class,'show']);
     Route::post('announcementsList/create', [Announcement_controller::class,'store']);
     Route::post('announcementsList/{user_id}', [Announcement_controller::class, 'update']);
