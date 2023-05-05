@@ -15,13 +15,14 @@ class Notification_controller extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
-    {
-        $Announcements=Announcement::all();
+    {        $Announces=Announcement::all()->take(-3);
+        $Announcements=Announcement::all()->reverse();
         $id=$Announcements->first()->user_id;
         $user=User::find($id);
                 return view ("Announcements",[
                     'user' =>$user,
-                    'Announcements' => $Announcements
+                    'Announcements' => $Announcements,
+                    'Announces'=>$Announces
                 ]);
 
     }
@@ -50,12 +51,22 @@ class Notification_controller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public  function show()
     {
-        //
+        $Announces=Announcement::all()->take(-3);
+        switch (Auth::user()->role) {
+            case(0):
+                return view("Admin.AdminDash")->with(["Announces" => $Announces]);
+            case(1):
+                return view ("ViceDean.viceDeanDash")->with(["Announces" => $Announces]);
+            case(2):
+                return view ("CFD.AssignTeacher")->with(["Announces" => $Announces]);
+            case(3):
+                return view ("Teacher.Announcements")->with(["Announces" => $Announces]);
+            case(4):
+                return view ("Participant.Announcements")->with(["Announces" => $Announces]);
+        };
     }
 
     /**

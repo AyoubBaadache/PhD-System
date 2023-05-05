@@ -37,7 +37,7 @@ Route::get('/check',[MY_Controller::class,'index']);
 
 //Admin routes
 Route::prefix('admin')->group(function () {
-    Route::view('home', 'Admin.AdminDash')->name('home');
+    Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource("/users",UsersController::class);
     Route::post('/admin/users/{user_id}', [UsersController::class, 'update']);
     Route::post('/admin/users/delete_user', [UsersController::class, 'destroy']);
@@ -56,7 +56,7 @@ Route::resource("users/announcements",Notification_controller::class);
 
 //Vice Dean routes
 Route::prefix('vd')->group(function () {
-    Route::view('home', 'ViceDean.viceDeanDash')->name('DashVD');
+    Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource('/code', Secret_generator_controller::class);
     Route::get("/announcementsList",[Announcement_controller::class,'show']);
     Route::post('announcementsList/create', [Announcement_controller::class,'store']);
@@ -81,9 +81,8 @@ Route::prefix('participant')->group(function () {
 
 //CFD routes
 Route::prefix('cfd')->group(function () {
-    Route::view('home', 'CFD.DashCFD')->name('DashCFD');
+    Route::get('/assignTeachers', [Notification_controller::class, 'show']);
     Route::view('grades', 'CFD.shareGrades')->name('grades');
-    Route::view('assignTeachers', 'CFD.AssignTeacher')->name('assignTeachers');
     Route::view('announcements', 'CFD.Announcements')->name('announcements');
 });
 //End CFD

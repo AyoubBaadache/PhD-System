@@ -64,7 +64,7 @@
                                                                 <span class="info-success"> {{$Announcement->priority}}</span>
                                                                 @break
                                                         @endswitch
-                                                        </i>
+                                                        </i><i style="float: right">{{$Announcement->created_at}}</i>
                                                 </div>
                                             </div>
                                             <br />

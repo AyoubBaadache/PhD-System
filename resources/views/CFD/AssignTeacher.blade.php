@@ -7,6 +7,10 @@
 @endsection
 
 @section('style')
+    <style>
+        .hidden {display:none}
+
+    </style>
 @endsection
 
 @section('breadcrumb-title')
@@ -26,25 +30,47 @@
                 <div class="card">
                     <div class="card-header pb-0 card-no-border">
                     </div>
-                    <div class="card-body">
+                    <from>
+
+                        <div class="card-body">
+                            <button class="btn btn-pill btn-light" style="margin-bottom: 15px;" type="submit">Validate</button>
+
                         <div class="table-responsive">
                             <table class="display" id="basic-9" >
                                 <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>last name</th>
                                     <th>Subject</th>
-                                    <th>Action</th>
+                                    <th>First Teacher</th>
+                                    <th>Second Teacher</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>Tiger Nixon</td>
-                                    <td>Edinburgh</td>
-                                    <td>$320,800</td>
+                                    <td>
+                                        <select class="js-example-basic-single " id="select-form-1">
+                                            <option value="1" selected disabled>Teacher 1</option>
+                                            <option value="VD">1</option>
+                                            <option value="CD">2</option>
+                                            <option value="TC">3</option>
+                                            <option value="PA">4</option>
+                                            <option value="AD">5</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="js-example-basic-single " id="select-form-2">
+                                            <option value="2" selected disabled>Teacher 2</option>
+                                            <option value="VD">1</option>
+                                            <option value="CD">2</option>
+                                            <option value="TC">3</option>
+                                            <option value="PA">4</option>
+                                            <option value="AD">5</option>
+                                        </select>
+                                    </td>
                                     <td>
                                         <ul class="action">
-                                            <li class="edit"> <a  type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i data-feather="link-2"></i></a></li>
+
                                         </ul>
                                     </td>
                                 </tr>
@@ -52,62 +78,21 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>last name</th>
                                     <th>Subject</th>
+                                    <th>First Teacher</th>
+                                    <th>Second Teacher</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
+                    </from>
                 </div>
             </div>
             <!-- State saving Ends-->
         </div>
     </div>
-    <!--Add user Model-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Assign Teacher</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-
-                            <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label">Subject</label>
-                                <div class="col-sm-9">
-                                    <select class="js-example-basic-single ">
-                                        <option value="" selected disabled>Subject</option>
-                                        <option value="VD">1</option>
-                                        <option value="CD">2</option>
-                                        <option value="TC">3</option>
-                                        <option value="PA">4</option>
-                                        <option value="AD">5</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card-footer text-end">
-                    <div class="col-sm-9 offset-sm-3">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                        <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Add user Model-->
-
-
-
 
 
 
@@ -119,4 +104,34 @@
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
     <script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
+    <script>
+        $( document ).ready(function() {
+
+            // Get references to the two select forms
+            const selectForm1 = document.getElementById('select-form-1');
+            const selectForm2 = document.getElementById('select-form-2');
+
+            // Add event listeners to both select forms
+            selectForm1.addEventListener('change', handleSelectChange);
+            selectForm2.addEventListener('change', handleSelectChange);
+
+            // Define the event handler function
+            function handleSelectChange(event) {
+                // Get the selected value of the current form
+                const selectedValue = event.target.value;
+
+                // Determine which form triggered the event
+                const isForm1 = event.target === selectForm1;
+
+                // Get a reference to the other form
+                const otherForm = isForm1 ? selectForm2 : selectForm1;
+
+                // Remove the options that have already been selected in the other form
+                Array.from(otherForm.options).forEach(option => {
+                    if (option.value === selectedValue) {
+                        option.remove();
+                    }
+                });
+            }});
+    </script>
 @endsection

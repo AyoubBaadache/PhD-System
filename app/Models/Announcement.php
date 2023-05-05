@@ -16,5 +16,7 @@ class Announcement extends Model
         'ending',
         'content',
         'user_id',
+        'created_at',
+        'updated_at',
     ];
 }

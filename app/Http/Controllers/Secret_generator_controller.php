@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use App\Models\Secret;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,14 +16,9 @@ class Secret_generator_controller extends Controller
 
     public function index()
     {
-
+        $Announcements =  Announcement::all();
         $codes=User::join('secrets','users.id','=','secrets.user_id')->where('role', 4)->get();
-        return view('ViceDean.code')->with(
-
-            'users',$codes,
-        );
-
-
+        return view('ViceDean.code')->with('users',$codes,)->with('Announcements',$Announcements);
     }
 
     /**

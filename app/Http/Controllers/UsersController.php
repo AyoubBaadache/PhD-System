@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Imports\UsersImport;
+use App\Models\Announcement;
 Use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,8 +11,9 @@ use Maatwebsite\Excel\Facades\Excel;
 class UsersController extends Controller
 {
     public function index(){
+        $Announcements =  Announcement::all();
         $user = user::all() -> whereNotIn ( 'role' , 0);
-        return view ("Admin.UsersManagement")->with('users',$user);
+        return view ("Admin.UsersManagement")->with('users',$user)->with('Announcements',$Announcements);
     }
     public
     function store (

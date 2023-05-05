@@ -33,15 +33,6 @@
                                                                      href="{{  url('users/announcements')}}">
                         <span><i data-feather="globe" style="margin-right: 10px"></i></span>
                         <span>Announcements</span></a></li>
-                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
-                                                                     href="">
-                        <span><i class="fa fa-user" style="margin-right: 10px"></i></span>
-                        <span>Profile</span></a></li>
-                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
-                                                                     href="">
-                        <span><i class="fa fa-arrow-circle-right" style="margin-right: 10px"></i></span>
-                        <span>Logout</span></a></li>
-
             </ul>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
         </nav>

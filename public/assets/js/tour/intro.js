@@ -376,7 +376,7 @@
     if (continueStep === false) {
       --this._currentStep;
       return false;
-    } 
+    }
 
     if ((this._introItems.length) <= this._currentStep) {
       //end of the intro
@@ -456,7 +456,7 @@
     var continueExit = true;
 
     // calling onbeforeexit callback
-    // 
+    //
     // If this callback return `false`, it would halt the process
     if (this._introBeforeExitCallback != undefined) {
       continueExit = this._introBeforeExitCallback.call(self);

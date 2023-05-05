@@ -1,6 +1,7 @@
 <?php
 
 namespace Laravel\Jetstream\Http\Controllers\Livewire;
+use App\Models\Announcement;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -15,9 +16,11 @@ class UserProfileController extends Controller
      */
     public function show(Request $request)
     {
+        $Announces = Announcement::all()->take(-4);
         return view('profile.show', [
             'request' => $request,
             'user' => $request->user(),
+            'Announces' => $Announces
         ]);
     }
 }
