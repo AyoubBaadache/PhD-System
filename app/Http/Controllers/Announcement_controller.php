@@ -32,7 +32,8 @@ class Announcement_controller extends Controller
     public function show()
     {
         $Announcement= Announcement::all();
-        return view ("ViceDean.announcementsList")->with('Announcements',$Announcement);
+        $Announces=Announcement::all()->take(-3);
+        return view ("ViceDean.announcementsList")->with('Announcements',$Announcement)->with('Announces',$Announces);
     }
 
     public function edit($id)

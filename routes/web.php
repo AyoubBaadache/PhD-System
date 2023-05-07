@@ -67,6 +67,7 @@ Route::prefix('vd')->group(function () {
 
 //Teacher routes
 Route::prefix('teacher')->group(function () {
+    Route::get('/home', [Notification_controller::class, 'show']);
     Route::view('grades', 'Teacher.grades')->name('grades');
     Route::view('announcements', 'Teacher.Announcements')->name('announcements');
 });
@@ -74,6 +75,7 @@ Route::prefix('teacher')->group(function () {
 
 // Participants routes
 Route::prefix('participant')->group(function () {
+    Route::get('/home', [Notification_controller::class, 'show']);
     Route::view('fgrades', 'Participant.fgrades')->name('fgrades');
     Route::view('announcements', 'Participant.Announcements')->name('announcements');
 });

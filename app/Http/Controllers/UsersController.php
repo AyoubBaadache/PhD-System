@@ -11,9 +11,9 @@ use Maatwebsite\Excel\Facades\Excel;
 class UsersController extends Controller
 {
     public function index(){
-        $Announcements =  Announcement::all();
+        $Announces =  Announcement::all();
         $user = user::all() -> whereNotIn ( 'role' , 0);
-        return view ("Admin.UsersManagement")->with('users',$user)->with('Announcements',$Announcements);
+        return view ("Admin.UsersManagement")->with('users',$user)->with('Announces',$Announces);
     }
     public
     function store (
