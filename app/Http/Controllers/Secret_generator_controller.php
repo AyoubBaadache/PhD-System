@@ -16,9 +16,9 @@ class Secret_generator_controller extends Controller
 
     public function index()
     {
-        $Announcements =  Announcement::all();
+        $Announces=Announcement::all()->take(-3);
         $codes=User::join('secrets','users.id','=','secrets.user_id')->where('role', 4)->get();
-        return view('ViceDean.code')->with('users',$codes,)->with('Announcements',$Announcements);
+        return view('ViceDean.code')->with('users',$codes,)->with('Announces',$Announces);
     }
 
     /**
