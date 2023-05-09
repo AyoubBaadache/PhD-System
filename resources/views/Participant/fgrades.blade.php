@@ -25,40 +25,29 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0 card-no-border">
+                        <a class="btn btn-pill btn-light" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="font-size: 15px;display: inline-block"><i data-feather="alert-triangle" style="height: 20px;margin-top: 4px; margin-right: 15px;align-items: center"></i> Make Claim</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="display" id="basic-9" >
                                 <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>last name</th>
-                                    <th>Final Grade</th>
-                                    <th>Rank</th>
-                                    <th>Action</th>
+                                    <th>Subject</th>
+                                    <th>Average</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>Tiger Nixon</td>
                                     <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>
-                                        <ul class="action">
-                                            <li class="delete"> <a  type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="fa fa-warning "></i></a></li>
-                                        </ul>
-                                    </td>
+
                                 </tr>
 
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>last name</th>
-                                    <th>Final Grade</th>
-                                    <th>Rank</th>
-                                    <th>Action</th>
+                                    <th>Subject</th>
+                                    <th>Average</th>
                                 </tr>
                                 </tfoot>
                             </table>
