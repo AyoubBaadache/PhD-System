@@ -9,17 +9,10 @@
 @section('style')
 @endsection
 
-@section('breadcrumb-title')
-    <h3>Announcements</h3>
-@endsection
 
-@section('breadcrumb-items')
-    <li class="breadcrumb-item">Vice Dean</li>
-    <li class="breadcrumb-item active"> Announcements List</li>
-@endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 100px">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">

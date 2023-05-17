@@ -3,7 +3,7 @@
         <div class="logo-wrapper"><a href="{{ url('vd/viceDeanDash') }}"><img class="img-fluid for-light"
                                                                                   src="{{ asset('assets/images/logo/logo.png') }}" alt=""><img class="img-fluid for-dark"
                                                                                                                                                src="{{ asset('assets/images/logo/logo_dark.png') }}" alt=""></a>
-            <div class="back-btn"><i class="fa fa-angle-left"></i></div>
+
         </div>
         <div class="logo-icon-wrapper"><a href="{{  url('vd/viceDeanDash') }}"><img class="img-fluid"
                                                                                         src="{{ asset('assets/images/logo/logo-icon.png') }}" alt=""></a></div>

@@ -11,17 +11,11 @@
 @section('style')
 @endsection
 
-@section('breadcrumb-title')
-    <h3>Dashboard</h3>
-@endsection
 
-@section('breadcrumb-items')
-    <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item active">Admin</li>
-@endsection
+
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 150px">
         <div class="row widget-grid">
             <div class="col-xxl-4 col-sm-6 box-col-6">
                 <div class="card profile-box">

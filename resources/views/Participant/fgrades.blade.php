@@ -9,17 +9,10 @@
 @section('style')
 @endsection
 
-@section('breadcrumb-title')
-    <h3>Finale Grades</h3>
-@endsection
 
-@section('breadcrumb-items')
-    <li class="breadcrumb-item">Participant</li>
-    <li class="breadcrumb-item active">Finale Grades</li>
-@endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 100px">
         <div class="row">
             <!-- State saving Starts-->
             <div class="col-sm-12">

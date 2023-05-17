@@ -5,7 +5,6 @@
                                                                                   alt=""><img class="img-fluid for-dark"
                                                                                               src="{{ asset('assets/images/logo/logo_dark.png') }}"
                                                                                               alt=""></a>
-            <div class="back-btn"><i class="fa fa-angle-left"></i></div>
         </div>
         <div class="logo-icon-wrapper"><a href="{{  url('participant/home') }}"><img class="img-fluid"
                                                                                         src="{{ asset('assets/images/logo/logo-icon.png') }}"
