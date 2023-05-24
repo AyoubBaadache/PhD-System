@@ -4,86 +4,152 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/select2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/sweetalert2.css')}}">
+
 @endsection
 
 @section('style')
-
-@endsection
-
-@section('breadcrumb-title')
-    <h3>Assign Teachers</h3>
-@endsection
-
-@section('breadcrumb-items')
-    <li class="breadcrumb-item">CFD</li>
-    <li class="breadcrumb-item active">Assign Teachers</li>
 @endsection
 
 @section('content')
-    <div class="container-fluid" style="margin-top: 100px">
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Teacher</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url("cfd/assignTeachers/store")}}" method="post"  >
+                        @csrf
+                        <div >
+                            <input type="hidden" name="subject_id" id="subject_id"  >
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-4 col-form-label" for="teacher">Choose a teacher:</label>
+                                            <div class="col-sm-8">
+                                                <select class="js-example-basic-single" name="teacher_id" id="teacher_id">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-4 col-form-label" for="teacher">Copies number:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control" type="number" name="c_nbr" id="c_nbr"  >
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-4 col-form-label" for="phases">Choose a phase:</label>
+                                            <div class="col-sm-8">
+                                                <select class="js-example-basic-single" name="phase" id="phase">
+                                                    <option value="1">phase 1</option>
+                                                    <option value="2">phase 2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top: 120px">
+        @if($errors->any())
+            <div class="alert alert-danger inverse alert-dismissible fade show" role="alert">
+                <i class="icon-alert"></i>
+                <p>You have  <b> exceeded </b> the copies numbers </p>
+                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"><span class="bg-danger" aria-hidden="true"></span></button>
+
+            </div>
+        @endif
         <div class="row">
             <!-- State saving Starts-->
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0 card-no-border">
                     </div>
-                    <from>
 
                         <div class="card-body">
-                            <button class="btn btn-pill btn-light" style="margin-bottom: 15px;" type="submit">Validate</button>
-
                         <div class="table-responsive">
                             <table class="display" id="basic-9" >
                                 <thead>
                                 <tr>
-                                    <th>Subject</th>
-                                    <th>First Teacher</th>
-                                    <th>Second Teacher</th>
-                                    <th>Papers</th>
+                                    <th>Name</th>
+                                    <th>Copies Number</th>
+                                    <th>Phase 1</th>
+                                    <th>Copies </th>
+                                    <th>Phase 2</th>
+                                    <th>Copies</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>
-                                        <select id="select1" class=" js-example-basic-single " >
-                                            <option value="1" selected disabled>Teacher 1</option>
-                                            <option value="VD">1</option>
-                                            <option value="CD">2</option>
-                                            <option value="TC">3</option>
-                                            <option value="PA">4</option>
-                                            <option value="AD">5</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select id="select2" class=" js-example-basic-single " >
-                                            <option value="2" selected disabled>Teacher 2</option>
-                                            <option value="VD">1</option>
-                                            <option value="CD">2</option>
-                                            <option value="TC">3</option>
-                                            <option value="PA">4</option>
-                                            <option value="AD">5</option>
-                                        </select>
-                                    </td>
-                                    <td class="col-sm-4">
-                                            <input  class="form-control" name="paper" id="paper"  type="number" placeholder="Papers Number">
+                                <tbody id="myTable" >
+                                @foreach($subjects as $subject)
+                                    <tr>
+                                        <td id="NAME">{{$subject['name']}} </td>
+                                        <td id="NAME">{{$subject['copies']}} </td>
+                                        <td id="#teacher_info">
+                                            @foreach($subject['ph1'] as $teacher)
+                                                <div id="info_t">
+                                                    {{$teacher->user_id}} copies :
+                                                </div>
+                                            @endforeach
+                                        </td>
+                                        <td id="#teacher_info">
+                                            @foreach($subject['c1'] as $copies)
+                                                <div id="info_t">
+                                                    {{$copies->t_copies}}
+                                                </div>
+                                            @endforeach
+                                        </td>
+                                        <td  id="NAME">
+                                            @foreach($subject['ph2'] as $teacher)
+                                                <div>
+                                                    {{$teacher->user_id}} copies : {{$teacher->t_copies}}
+                                                </div>
 
-                                    </td>
-                                </tr>
+                                            @endforeach
+                                        </td>
+                                        <td  id="#teacher_info">
+                                            @foreach($subject['c2'] as $copies)
+                                                <div id="info_t">
+                                                    {{$copies->t_copies}}
+                                                </div>
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align:center" id="NAME">
+                                            <!-- Button trigger modal -->
+                                            <button class="btn btn-pill btn-light AssignTeacherBtn"  id="add" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}"data-bs-toggle="modal" data-bs-target="#exampleModal" >Add teacher</button>
 
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>Subject</th>
-                                    <th>First Teacher</th>
-                                    <th>Second Teacher</th>
-                                    <th>Papers</th>
+                                    <th>Name</th>
+                                    <th>Copies Number</th>
+                                    <th>Phase 1</th>
+                                    <th>Copies </th>
+                                    <th>Phase 2</th>
+                                    <th>Copies</th>
+                                    <th></th>
                                 </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
-                    </from>
                 </div>
             </div>
             <!-- State saving Ends-->
@@ -101,4 +167,55 @@
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
     <script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
+    <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script>
+    <script src="{{asset('assets/js/sweet-alert/app.js')}}"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $(".AssignTeacherBtn").click(function (e){
+
+                    e.preventDefault();
+                    let subject_id=$(this).val();
+
+                    var dataValue = this.getAttribute("data-value");
+                    var dataValue2 = this.getAttribute("data-value2");
+
+                    console.log(subject_id);
+                    console.log(dataValue);
+                    console.log(dataValue2);
+                    $("#subject_id").val(subject_id);
+                    $.ajax({
+                        url:"{{route('get_teacher')}}",
+                        type : "POST",
+                        dataType:'json',
+                        data : {
+                            dataValue,
+                            dataValue2,
+                            _token: '{!! csrf_token() !!}'
+                        },
+                        // handle a successful response
+                        success : function(response){
+                            console.log('success',response)
+                            jQuery('#teacher_id').find('option')
+                                .remove()
+                                .end()
+                            jQuery.each(response,function(key,value){
+                                console.log(value);
+                                jQuery('#teacher_id')
+                                    .append('<option  value='+ value.id +'>'+ value.fname+ '</option>')
+                            })
+                        },
+                        error:function(error)
+                        {
+                            swal("You have exceeded the copies number", "You have exceeded the copies number", "error");
+                            console.log('error')
+                        },
+                    })
+
+                }
+            )
+        })
+    </script>
+
 @endsection

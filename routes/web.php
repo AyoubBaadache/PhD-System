@@ -5,6 +5,7 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\MY_Controller;
 use App\Http\Controllers\Notification_controller;
 use App\Http\Controllers\Secret_generator_controller;
+use App\Http\Controllers\teach_sub_controller;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -77,16 +78,15 @@ Route::prefix('teacher')->group(function () {
 Route::prefix('participant')->group(function () {
     Route::get('/home', [Notification_controller::class, 'show']);
     Route::view('fgrades', 'Participant.fgrades')->name('fgrades');
-    Route::view('announcements', 'Participant.Announcements')->name('announcements');
 });
 //End Participant
 
 //CFD routes
 Route::prefix('cfd')->group(function () {
     Route::get('/home', [Notification_controller::class, 'show']);
-    Route::get('/assignTeachers', [Notification_controller::class, 'show']);
-    Route::view('grades', 'CFD.shareGrades')->name('grades');
-    Route::view('announcements', 'CFD.Announcements')->name('announcements');
+    Route::resource('/assignTeachers', teach_sub_controller::class);
+    route::post("/assignTeachers/store",[teach_sub_controller::class,'store']);
+    Route::post('/assignTeachers/get_teacher',[teach_sub_controller::class,'get_teacher'])->name('get_teacher');    Route::view('grades', 'CFD.shareGrades')->name('grades');
 });
 //End CFD
 

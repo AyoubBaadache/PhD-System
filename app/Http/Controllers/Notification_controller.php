@@ -62,7 +62,7 @@ class Notification_controller extends Controller
             case(1):
                 return view ("ViceDean.viceDeanDash")->with(["Announces" => $Announces]);
             case(2):
-                return view ("CFD.AssignTeacher")->with(["Announces" => $Announces]);
+                return view ("CFD.DashCFD")->with(["Announces" => $Announces]);
             case(3):
                 return view ("Teacher.TeacherDash")->with(["Announces" => $Announces]);
             case(4):
