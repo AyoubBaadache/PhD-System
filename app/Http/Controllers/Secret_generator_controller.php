@@ -18,7 +18,10 @@ class Secret_generator_controller extends Controller
     {
         $Announces=Announcement::all()->take(-3);
         $codes=User::join('secrets','users.id','=','secrets.user_id')->where('role', 4)->get();
+        if (\Auth::user()->role==1)
         return view('ViceDean.code')->with('users',$codes,)->with('Announces',$Announces);
+        else
+            abort(403);
     }
 
     /**

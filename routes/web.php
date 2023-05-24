@@ -83,6 +83,7 @@ Route::prefix('participant')->group(function () {
 
 //CFD routes
 Route::prefix('cfd')->group(function () {
+    Route::get('/home', [Notification_controller::class, 'show']);
     Route::get('/assignTeachers', [Notification_controller::class, 'show']);
     Route::view('grades', 'CFD.shareGrades')->name('grades');
     Route::view('announcements', 'CFD.Announcements')->name('announcements');

@@ -13,7 +13,6 @@ class ExcelController extends Controller
     {
         $import = new ParticipantsImport();
         $import->setStartRow(2);
-
         Excel::import($import,request()->file('file'));
         return back();
     }
@@ -21,7 +20,6 @@ class ExcelController extends Controller
     {
         $import = new TeachersImport();
         $import->setStartRow(2);
-
         Excel::import($import,request()->file('file'));
         return back();
     }

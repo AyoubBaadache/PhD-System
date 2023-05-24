@@ -25,14 +25,7 @@
 @section('style')
 @endsection
 
-@section('breadcrumb-title')
-    <h3>Announcements</h3>
-@endsection
 
-@section('breadcrumb-items')
-    <li class="breadcrumb-item">Vice Dean</li>
-    <li class="breadcrumb-item active">Announcements</li>
-@endsection
 
 @section('content')
     <div class="container-fluid">

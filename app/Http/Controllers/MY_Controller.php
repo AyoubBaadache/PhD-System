@@ -15,6 +15,8 @@ class MY_Controller extends Controller
                 0 => redirect('admin/home'),
                 1 => redirect('vd/home'),
                 2 => redirect('cfd/home'),
+                3 => redirect('teacher/home'),
+                4 => redirect('participant/home'),
                 default => redirect('users/announcements'),
             };
         }

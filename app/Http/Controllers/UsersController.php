@@ -13,7 +13,10 @@ class UsersController extends Controller
     public function index(){
         $Announces =  Announcement::all();
         $user = user::all() -> whereNotIn ( 'role' , 0);
+        if(\Auth::user()->role==0)
         return view ("Admin.UsersManagement")->with('users',$user)->with('Announces',$Announces);
+        else
+            abort('403') ;
     }
     public
     function store (
@@ -45,7 +48,8 @@ class UsersController extends Controller
         $user -> ar_lname = $request -> input ( 'ar_Lname' );
         $user -> birthdate   = $request -> input ( 'Birthdate' );
         $user -> save ();
-        return back ();    }
+        return back ();
+    }
     public function destroy (Request $request) {
         $user = User ::find ( $request -> user_delete_id );
         $user -> delete ();

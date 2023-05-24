@@ -33,7 +33,10 @@ class Announcement_controller extends Controller
     {
         $Announcement= Announcement::all();
         $Announces=Announcement::all()->take(-3);
+        if (\Auth::user()->role==1)
         return view ("ViceDean.announcementsList")->with('Announcements',$Announcement)->with('Announces',$Announces);
+        else
+            abort(403);
     }
 
     public function edit($id)
@@ -49,7 +52,8 @@ class Announcement_controller extends Controller
         $announcement->Content = $request->input('COntent');
         $announcement->starting = $request->input('Starting');
         $announcement->ending = $request->input('Ending');
-        $announcement->save();        return back ();
+        $announcement->save();
+        return back ();
     }
 
     public function destroy(Request $request)
