@@ -70,6 +70,8 @@ Route::prefix('vd')->group(function () {
     Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource('/code', Secret_generator_controller::class);
     Route::resource('/claims', Claims::class);
+    Route::post('/claims/accept', [Claims::class, 'update']);
+    Route::post('/claims/refuse', [Claims::class, 'update1']);
     Route::get("/announcementsList",[Announcement_controller::class,'show']);
     Route::post('announcementsList/create', [Announcement_controller::class,'store']);
     Route::post('announcementsList/{user_id}', [Announcement_controller::class, 'update']);
@@ -98,6 +100,7 @@ Route::prefix('participant')->group(function () {
 Route::prefix('cfd')->group(function () {
     Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource('/claims', Claims::class);
+
     Route::resource('/assignTeachers', teach_sub_controller::class);
     route::post("/assignTeachers/store",[teach_sub_controller::class,'store']);
     Route::post('/assignTeachers/get_teacher',[teach_sub_controller::class,'get_teacher'])->name('get_teacher'); Route::view('grades', 'CFD.shareGrades')->name('grades');
