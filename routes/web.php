@@ -4,9 +4,11 @@ use App\Http\Controllers\Announcement_controller;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\Claims;
 use App\Http\Controllers\MY_Controller;
+use App\Http\Controllers\Notes_controller;
 use App\Http\Controllers\Notification_controller;
 use App\Http\Controllers\Secret_generator_controller;
 use App\Http\Controllers\teach_sub_controller;
+use App\Http\Controllers\teachers_sub_list;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -82,8 +84,10 @@ Route::prefix('vd')->group(function () {
 /*****************************************Teacher routes ************************************/
 Route::prefix('teacher')->group(function () {
     Route::get('/home', [Notification_controller::class, 'show']);
-    Route::view('grades', 'Teacher.grades')->name('grades');
-    Route::view('announcements', 'Teacher.Announcements')->name('announcements');
+    Route::resource('/grades', teachers_sub_list::class);
+    Route::get('/final_grades/{id}', [Notes_controller::class,'index']);
+    Route::post('/final_grades/store', [Notes_controller::class,'store']);
+    Route::resource('/final_grades/notes', Notes_controller::class);
 });
 /*******************************************************************************************/
 
@@ -107,3 +111,4 @@ Route::prefix('cfd')->group(function () {
 });
 /*******************************************************************************************/
 
+/*******************************************************************************************/
