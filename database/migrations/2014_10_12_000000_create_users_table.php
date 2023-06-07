@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("lname");
             $table->string("ar_lname");
             $table->date('birthdate');
-            $table->integer("age");
             $table->string('commune');
             $table->string('field');
             $table->integer('role');

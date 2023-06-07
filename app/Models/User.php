@@ -31,7 +31,6 @@ class User extends Authenticatable
         'lname',
         'ar_lname',
         'birthdate',
-        'age',
         'commune',
         'field',
         'role',
