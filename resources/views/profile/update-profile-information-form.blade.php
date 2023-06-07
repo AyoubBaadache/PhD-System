@@ -87,7 +87,7 @@
             <x-input-error for="field" class="mt-2"/>
         </div>
         <!-- Email -->
-        <div class="col-span-8 sm:col-span-6 form-group">
+        <div class="col-span-6 sm:col-span-4 form-group">
             <label class="col-form-label" for="email" value="{{ __('Email') }}">Email</label>
             <input id="email" type="email" class="mt-1 block w-full form-control" wire:model.defer="state.email"
                      autocomplete="username"/>

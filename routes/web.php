@@ -104,9 +104,9 @@ Route::prefix('participant')->group(function () {
 Route::prefix('cfd')->group(function () {
     Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource('/claims', Claims::class);
-
     Route::resource('/assignTeachers', teach_sub_controller::class);
     route::post("/assignTeachers/store",[teach_sub_controller::class,'store']);
+    route::post("/assignTeachers/3rd",[teach_sub_controller::class,'edit']);
     Route::post('/assignTeachers/get_teacher',[teach_sub_controller::class,'get_teacher'])->name('get_teacher'); Route::view('grades', 'CFD.shareGrades')->name('grades');
 });
 /*******************************************************************************************/

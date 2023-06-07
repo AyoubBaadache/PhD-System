@@ -34,7 +34,6 @@ class UsersController extends Controller
             'role'       => $request ->role,
             'email'      => $request -> email ,
             'password'   => Hash ::make ( $request -> password ) ,
-            'age'        => $request -> age ,
 
         ] );
         return back ();

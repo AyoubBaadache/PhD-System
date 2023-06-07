@@ -19,8 +19,7 @@
                 <div class="card">
                     <div class="card-header pb-0 card-no-border">
                         <a class="btn btn-pill btn-light" href="{{url('/users/create')}}" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="font-size: 15px;display: inline-block"><i data-feather="user-plus" style="height: 20px; margin-right: 15px;align-items: center"></i> Add User</a>
-                        <a class="btn btn-pill  btn-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2" style="font-size: 15px;display: inline-block"><i data-feather="file-plus" style="height: 20px; margin-right: 15px;align-items: center"></i>Add Participants</a>
-                        <a class="btn btn-pill  btn-light" type="button" data-bs-toggle="modal" data-bs-target="#TeacherM" style="font-size: 15px;display: inline-block"><i data-feather="file-plus" style="height: 20px; margin-right: 15px;align-items: center"></i>Add Teachers</a>
+                        <a class="btn btn-pill  btn-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2" style="font-size: 15px;display: inline-block"><i data-feather="file-plus" style="height: 20px; margin-right: 15px;align-items: center"></i>Add Users</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -134,12 +133,7 @@
                                     <input class="form-control" name="birthdate" id="birthdate"  type="date" placeholder="BirthDate">
                                 </div>
                             </div>
-                            <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label">age</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" name="age" id="age"  type="number" placeholder="Age">
-                                </div>
-                            </div>
+
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">Email</label>
                                 <div class="col-sm-9">
@@ -180,71 +174,71 @@
     </div>
     <!--Add user Model-->
 
-    <!--Add Participants Model-->
+    <!--Add Users Model-->
     <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <form action="{{url("/admin/users/importP")}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add Participants</h5>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+            <div class="modal-content">
+                <div class="">
+                    <ul class="pull-center nav nav-tabs border-tab nav-primary" id="top-tab" role="tablist" style="margin-top: 10px" >
+                        <li class="nav-item"><a class="nav-link " style="color: #d2d0d6" id="top-home-tab" data-bs-toggle="tab" href="#top-home" role="tab" aria-controls="top-home" aria-selected="false">Add Participant</a></li>
+                        <li class="nav-item"><a class="nav-link active" style="color: #acbad5" id="profile-top-tab" data-bs-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="true">Add Teacher</a></li>
+                    </ul>
+                </div>
+            <div class="tabbed-card">
 
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3 row">
-                                    <label class="col-sm-3 col-form-label">Upload File</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" name="file" id="file" type="file">
+                <div class="tab-content" id="top-tabContent">
+                    <div class="tab-pane fade" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+                        <form action="{{url("/admin/users/importP")}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Upload File</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" name="file" id="file" type="file">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="card-footer text-end">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
+                                </div>
+                        </form>
                     </div>
-                    <div class="card-footer text-end">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                        <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!--Add Participants Model-->
+                    <div class="tab-pane fade active show" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
+                        <form action="{{url("/admin/users/importT")}}" method="POST" enctype="multipart/form-data">
+                            @csrf
 
-    <!--Add Teachers Model-->
-    <div class="modal fade" id="TeacherM" tabindex="-1" role="dialog" aria-labelledby="TeacherM" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <form action="{{url("/admin/users/importT")}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add Participants</h5>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3 row">
-                                    <label class="col-sm-3 col-form-label">Upload File</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" name="file" id="file" type="file">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3 row">
+                                                <label class="col-sm-3 col-form-label">Upload File</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" name="file" id="file" type="file">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="card-footer text-end">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
+                                </div>
+                        </form>
                     </div>
-                    <div class="card-footer text-end">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                        <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
-                    </div>
+
                 </div>
-            </form>
+            </div>
+            </div>
         </div>
     </div>
-    <!--Add Teachers Model-->
+    <!--Add Users Model-->
+
 
     <!--Modify Model-->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">

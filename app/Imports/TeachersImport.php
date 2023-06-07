@@ -35,11 +35,10 @@ class TeachersImport implements ToModel , WithStartRow
             'lname'    => $row[ 2 ],
             'ar_lname'    => $row[3],
             'birthdate'    => $row[4],
-            'age'    => $row[5],
-            'commune'    => $row[6],
-            'field'    => $row[7],
-            'email'    => $row[8],
-            'password' => Hash::make($row[9]),
+            'commune'    => $row[5],
+            'field'    => $row[6],
+            'email'    => $row[7],
+            'password' => Hash::make($row[8]),
             'role'    => '3',
 
         ]);

@@ -21,7 +21,7 @@
                         <span><i class="fa fa-home" style="margin-right: 10px"></i></span>
                         <span>Dashboard</span></a></li>
 
-                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('teacher/fgrades')}}">
+                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('teacher/grades')}}">
                         <span><i class="fa fa-graduation-cap" style="margin-right: 10px"></i></span>
                         <span>Grades</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('users/announcements')}}">
