@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('priority');
-            $table->string("starting time");
-            $table->string("ending time");
+
             $table->integer("content");
             $table->unsignedBigInteger("user_id");
             $table->foreign('user_id', 'user_fk_1001496')->references('id')->on('users');

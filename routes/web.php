@@ -55,6 +55,7 @@ Route::prefix('admin')->group(function () {
 Route::controller(ExcelController::class)->group(function(){
     Route::post('/admin/users/importP', 'importP')->name('admin.users.importP');
     Route::post('/admin/users/importT', 'importT')->name('admin.users.importT');
+
 });
 /****************************************************************************/
 
@@ -63,7 +64,7 @@ Route::controller(ExcelController::class)->group(function(){
          ->name('logout');
 /*************************************************************************/
 
-/******************************** Annoucements ***************************/
+/******************************** Announcements ***************************/
 Route::resource("users/announcements",Notification_controller::class);
 /****************************************************************************/
 
@@ -72,8 +73,8 @@ Route::prefix('vd')->group(function () {
     Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource('/code', Secret_generator_controller::class);
     Route::resource('/claims', Claims::class);
-    Route::post('/claims/accept', [Claims::class, 'update']);
-    Route::post('/claims/refuse', [Claims::class, 'update1']);
+    Route::get('/claims/accept/{id}', [Claims::class, 'accept']);
+    Route::get('/claims/refuse/{id}', [Claims::class, 'refuse']);
     Route::get("/announcementsList",[Announcement_controller::class,'show']);
     Route::post('announcementsList/create', [Announcement_controller::class,'store']);
     Route::post('announcementsList/{user_id}', [Announcement_controller::class, 'update']);

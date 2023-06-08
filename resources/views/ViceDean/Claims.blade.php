@@ -1,4 +1,4 @@
-@extends('layouts.simple.Participantmaster')
+@extends('layouts.simple.VDmaster')
 @section('title', 'Finale Grades')
 
 @section('css')
@@ -44,22 +44,11 @@
                                     <td>{{$item->status}}</td>
                                     <td>
                                         <ul class="action">
-
-                                            <li class="edit"> <form action="{{url('/vd/claims/accept')}}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input class="form-control" name="accept" id="accept"  type="hidden" value="{{$item->id}}">
-                                            <button class="btn btn-sm btn-transparent delete-item-btn acceptClaimBtn" type="submit" value="{{$item->id}}"><i class="fa fa-check"></i></button>
-                                        </form>
+                                            <li class="edit">
+                                            <a class="btn btn-sm btn-transparent delete-item-btn acceptClaimBtn" href="claims/accept/{{$item->id}}" type="button" value="{{$item->id}}"><i class="fa fa-check"></i></a>
                                             </li>
                                             <li class="delete">
-                                                <form action="{{url('/vd/claims/refuse')}}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-
-                                                    <input class="form-control" name="refuse" id="refuse"  type="hidden" value="{{$item->id}}" >
-                                            <button class="btn btn-sm btn-transparent delete-item-btn refuseClaimBtn" type="submit" value="{{$item->id}}" ><i class="fa fa-file-excel-o"></i></button>
-                                        </form>
+                                            <a class="btn btn-sm btn-transparent delete-item-btn refuseClaimBtn" href="claims/refuse/{{$item->id}}" type="button" value="{{$item->id}}" ><i class="fa fa-file-excel-o"></i></a>
                                             </li>
                                         </ul>
                                     </td>

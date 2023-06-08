@@ -48,10 +48,8 @@ class Announcement_controller extends Controller
     public function update(Request $request)
     {
         $announcement = announcement::find($request->user_edit_id);
-        $announcement->title = $request->input('Title');
-        $announcement->Content = $request->input('COntent');
-        $announcement->starting = $request->input('Starting');
-        $announcement->ending = $request->input('Ending');
+        $announcement->title = $request->input('ttl');
+        $announcement->Content = $request->input('cntnt');
         $announcement->save();
         return back ();
     }
@@ -68,8 +66,6 @@ class Announcement_controller extends Controller
     {
         $announcement->title = $request->input('title');
         $announcement->Content = $request->input('Content');
-        $announcement->starting = $request->input('starting');
-        $announcement->ending = $request->input('ending');
         $announcement->priority = $request->input('priority');
         $announcement->save();
     }

@@ -12,8 +12,6 @@ class Announcement extends Model
         'id',
         'title',
         'priority',
-        'starting',
-        'ending',
         'content',
         'user_id',
         'created_at',

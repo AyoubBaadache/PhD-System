@@ -20,24 +20,23 @@
                         <a class="btn btn-pill btn-light" href="{{url('/users/create')}}" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="font-size: 15px;display: inline-block"><i class="fa fa-share-alt" style=" margin-right: 10px;align-items: center"></i> Make Announcement</a>
                     </div>
                     <div class="card-body">
-                        <div class="dt-ext table-responsive">
-                            <table class="display" id="export-button">
+                        <div class="table-responsive">
+                            <table class="display" id="basic-9">
                                 <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Priority</th>
-                                    <th>Starting Date</th>
-                                    <th>Ending Date</th>
-                                    <th>Actions</th>
+                                    <th style="width: 200px;">Title</th>
+                                    <th style="width: 200px">Content</th>
+                                    <th style="width: 200px">Priority</th>
+                                    <th style="width: 150px;">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                               @foreach($Announcements as $Announcement)
                                 <tr>
                                     <th>{{$Announcement->title}}</th>
+                                    <th>{{$Announcement->Content}}</th>
                                     <th>{{$Announcement->priority}}</th>
-                                    <th>{{$Announcement->starting}}</th>
-                                    <th>{{$Announcement->ending}}</th>
+
                                     <th>
                                         <ul class="action">
                                             <li class="edit" > <button class="btn btn-sm btn-transparent edit-item-btn editUserBtn" type="button" value="{{$Announcement->id}}" data-bs-toggle="modal" data-bs-target="#editModal"><i class="icon-pencil-alt"></i></button>
@@ -51,9 +50,8 @@
                                 <tfoot>
                                 <tr>
                                     <th>Title</th>
+                                    <th>Content</th>
                                     <th>Priority</th>
-                                    <th>Starting Date</th>
-                                    <th>Ending Date</th>
                                     <th>Actions</th>
                                 </tr>
                                 </tfoot>
@@ -93,22 +91,7 @@
                                                 <option>Low</option>
                                                 <option>Medium</option>
                                                 <option>High</option>
-                                                <option>Urgent</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="mb-3">
-                                            <label>Starting date</label>
-                                            <input class="datepicker-here form-control"  id="starting" name="starting" type="date" data-language="en">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="mb-3">
-                                            <label>Ending date</label>
-                                            <input class="datepicker-here form-control"  id="ending" name="ending" type="date" data-language="en">
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +99,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label>Enter some Details</label>
-                                            <input class="form-control" name="Content" id="exampleFormControlTextarea4 Content " rows="4">
+                                            <input class="form-control" name="Content" id="exampleFormControlTextarea4 Content " style="height: 80px;">
                                         </div>
                                     </div>
                                 </div>
@@ -153,21 +136,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label>Announcement Title</label>
-                                            <input class="form-control" type="text" id=an_Title" name="Title" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="mb-3">
-                                            <label>Starting date</label>
-                                            <input class="datepicker-here form-control"  id="an_Starting" name="Starting" type="date" data-language="en">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="mb-3">
-                                            <label>Ending date</label>
-                                            <input class="datepicker-here form-control"  id="an_Ending" name="Ending" type="date" data-language="en">
+                                            <input class="form-control" type="text" id=ttl" name="ttl" >
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +144,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label> Details</label>
-                                            <input class="form-control" name="COntent" id="an_COntent " rows="4">
+                                            <input class="form-control" name="cntnt" id="cntnt" style="height:80px;">
                                         </div>
                                     </div>
                                 </div>
@@ -229,26 +198,10 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/buttons.colVis.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.keyTable.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.colReorder.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
-    <script src="{{asset('assets/js/datatable/datatable-extension/custom.js')}}"></script>
+    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+    <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
 
     <script>
         $(document).ready(function(){
@@ -260,27 +213,19 @@
             });
         });
 
-
-
         $(document).ready(function(){
             $(".editUserBtn").click(function(e){
                 e.preventDefault();
-                let user_id=$(this).val();
+                let user_id = $(this).val();
                 $("#user_id").val(user_id);
-                $('editModal').modal('show');
-                $tr =$(this).closest("tr");
+                $('#editModal').modal('show'); // Corrected line
+                $tr = $(this).closest("tr");
                 let data = $tr.children("td").map(function(){
                     return $(this).text();
                 }).get();
                 console.log(data);
-                $('#an_Title').val(data[0]);
-                $('#an_Starting ').val(data[1]);
-                $('#an_Ending').val(data[2]);
-                $('#an_COntent ').val(data[3]);
-
-
-
-
+                $('#ttl').val(data[0]);
+                $('#cntnt').val(data[1]);
             });
         });
     </script>

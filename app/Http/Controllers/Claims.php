@@ -83,36 +83,24 @@ class Claims extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function refuse($id)
     {
-        //
+        $claim =Claim::find ( $id);
+
+        $claim -> status = "refused";
+        $claim -> update ();
+        return back ();
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update (Request $request){
-        $claim =Claim::find ( $request -> accept );
+
+    public function accept ($id){
+        $claim =Claim::find ( $id );
         $claim -> status = "accepted";
-        $claim -> save ();
+        $claim -> update ();
         return back ();
     }
-    public function update1 (Request $request){
-        $claim =Claim::find ( $request -> refuse );
-        $claim -> status = "refused";
-        $claim -> save ();
-        return back ();
-    }
+
 
     /**
      * Remove the specified resource from storage.
