@@ -28,7 +28,7 @@ class G_calc_controller extends Controller
         $fgrades=Final_grade::orderBy('Final_AVG','DESC')->join('secrets','final_grades.secret','=','secrets.id')->join("users","secrets.user_id","=","users.id")->get()->take(3);
 
         $f_count=$f_grades->count();
-if(\Auth::user()->role == 3)
+        if(\Auth::user()->role == 2)
         return view('CFD.Rnking',[
             'nt_nbr'=>$nt_nbr,
             'vd_nbr'=>$v_d,

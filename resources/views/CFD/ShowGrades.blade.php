@@ -7,6 +7,16 @@
 @endsection
 
 @section('style')
+<style>
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin-right: 5px;
+        background-color: rgba(186,0,18,0.3);
+        border-radius: 50%;
+        display: inline-block;
+    }
+</style>
 @endsection
 
 
@@ -45,31 +55,21 @@
                                     <tr>
 
                                         @if($note['ph3']== null)
-                                            <td  id="NAME">{{$note['secret']}}  </td>
+                                            <td  id="NAME"> </span>{{$note['secret']}}  </td>
                                         @else
-                                            <td style="background-color: rgba(186,0,18,0.2)" id="NAME">{{$note['secret']}}  </td>
+                                            <td  id="NAME"> <span class="dot" ></span>{{$note['secret']}}  </td>
                                         @endif
-                                        @if($note['ph3']== null)
+
                                                 <td  id="NAME">{{$note['ph1']['note']}}</td>
-                                        @else
-                                                <td style="background-color: rgba(186,0,18,0.2)" id="NAME">{{$note['ph1']['note']}}</td>
-                                         @endif
-                                         @if($note['ph3']== null)
-                                                <td style="" id="NAME">{{$note['ph2']['note']}}  </td>
-                                         @else
-                                                <td style="background-color: rgba(186,0,18,0.2)" id="NAME">{{$note['ph2']['note']}}  </td>
-                                         @endif
+
+                                                <td  id="NAME">{{$note['ph2']['note']}}  </td>
 
                                         @if($note['ph3']== null)
                                             <td  id="NAME">/  </td>
                                         @else
-                                            <td style="background-color: rgba(186,0,18,0.2)" id="NAME">{{$note['ph3']['note']}}  </td>
+                                            <td  id="NAME">{{$note['ph3']['note']}}  </td>
                                         @endif
-                                        @if($note['ph3']== null)
                                                 <td  id="NAME">{{$note['v_g']['note']}}  </td>
-                                        @else
-                                                <td style="background-color: rgba(186,0,18,0.2)" id="NAME">{{$note['v_g']['note']}}  </td>
-                                        @endif
 
 
 
