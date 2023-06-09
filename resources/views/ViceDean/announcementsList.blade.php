@@ -99,7 +99,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label>Enter some Details</label>
-                                            <input class="form-control" name="Content" id="exampleFormControlTextarea4 Content " style="height: 80px;">
+                                            <textarea class="form-control" name="Content" id="exampleFormControlTextarea4 Content " style="height: 80px;"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label>Announcement Title</label>
-                                            <input class="form-control" type="text" id=ttl" name="ttl" >
+                                            <input class="form-control" type="text" id="title1" name="ttl" >
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label> Details</label>
-                                            <input class="form-control" name="cntnt" id="cntnt" style="height:80px;">
+                                            <textarea class="form-control" name="cntnt" id="cntnt" style="height:80px;"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -213,18 +213,17 @@
             });
         });
 
-        $(document).ready(function(){
-            $(".editUserBtn").click(function(e){
+        $(document).ready(function() {
+            $(".editUserBtn").click(function(e) {
                 e.preventDefault();
                 let user_id = $(this).val();
                 $("#user_id").val(user_id);
-                $('#editModal').modal('show'); // Corrected line
+                $('#editModal').modal('show');
                 $tr = $(this).closest("tr");
-                let data = $tr.children("td").map(function(){
+                let data = $tr.find("th").map(function() {
                     return $(this).text();
                 }).get();
-                console.log(data);
-                $('#ttl').val(data[0]);
+                $('#title1').val(data[0]);
                 $('#cntnt').val(data[1]);
             });
         });
