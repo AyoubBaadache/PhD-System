@@ -34,9 +34,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($Claims as $item)
                                 <tr>
-                                    @foreach($Claims as $item)
-                                        <td>{{$item->id}}</td>
+
+                                        <td>{{$item->title}}</td>
                                         <td>{{$item->subject_id}}</td>
                                         <td>{{$item->user_id}}</td>
                                         <td>{{$item->claim}}</td>
@@ -52,9 +53,9 @@
                                                 </li>
                                             </ul>
                                         </td>
-                                    @endforeach
-                                </tr>
 
+                                </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -64,6 +65,7 @@
                                     <th>Reason</th>
                                     <th>Created at</th>
                                     <th>Status</th>
+                                    <th></th>
                                 </tr>
                                 </tfoot>
                             </table>
