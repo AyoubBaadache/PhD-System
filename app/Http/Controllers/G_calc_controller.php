@@ -6,6 +6,7 @@ use App\Models\Announcement;
 use App\Models\Final_grade;
 use App\Models\Secret;
 use App\Models\Subject;
+use App\Models\User;
 use App\Models\V_grade;
 use Illuminate\Http\Request;
 
@@ -16,22 +17,38 @@ class G_calc_controller extends Controller
      */
     public function index()
     {
+        $sbjct =Subject::all();
+
         $sub=Subject::all()->count();
         $secret=Secret::all()->count();
         $v_d=V_grade::all()->count();
         $Announces=Announcement::all()->take(-3);
         $nt_nbr=$sub*$secret;
-        $f_grades=Final_grade::orderBy('Final_AVG','DESC')->get();
-        $f_count=$f_grades->count();
+        $f_grades=Final_grade::orderBy('Final_AVG','DESC')->join('secrets','final_grades.secret','=','secrets.id')->get();
+        $fgrades=Final_grade::orderBy('Final_AVG','DESC')->join('secrets','final_grades.secret','=','secrets.id')->get()->take(3);
 
+        $f_count=$f_grades->count();
+if(\Auth::user()->role == 3)
         return view('CFD.Rnking',[
             'nt_nbr'=>$nt_nbr,
             'vd_nbr'=>$v_d,
             'f_grades'=>$f_grades,
             'nbr'=>$f_count,
             'Announces'=>$Announces,
+            'sbjcts'=>$sbjct,
 
         ]);
+else{
+    return view('Participant.fgrades',[
+        'nt_nbr'=>$nt_nbr,
+        'vd_nbr'=>$v_d,
+        'fgrades'=>$fgrades,
+        'nbr'=>$f_count,
+        'Announces'=>$Announces,
+        'sbjcts'=>$sbjct,
+
+    ]);
+}
     }
     /**calculate the grades**/
 

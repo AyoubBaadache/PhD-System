@@ -19,10 +19,13 @@ class CFD_note_controller extends Controller
     {
         $subjects=Subject::all();
         $Announces=Announcement::all()->take(-3);
+        $sbjct =Subject::all();
 
         return view('CFD.shareGrades',[
             'subjects'=>$subjects,
             'Announces'=>$Announces,
+            'sbjcts'=>$sbjct,
+
         ]);
     }
     /**
@@ -30,6 +33,9 @@ class CFD_note_controller extends Controller
      */
     public function CFD_notes($id)
     {
+        $subjects=Subject::all();
+        $sbjct =Subject::all();
+
         $Announces=Announcement::all()->take(-3);
         $msg='Finished';
         $t=array();
@@ -50,7 +56,7 @@ class CFD_note_controller extends Controller
             foreach ($secret as $nt){
 
                 $t[]=[
-                    'secret'=>$nt->id,
+                    'secret'=>$nt->secret_code,
                     'ph1'=>Note::join('users_subjects','notes.folder','=','users_subjects.id')
                         ->where('subject_id',$id)
                         ->where('phase',1)->where('secret',$nt->id)->get('note')->first(),
@@ -71,6 +77,9 @@ class CFD_note_controller extends Controller
                 'conflict'=>$conf,
                 'Message'=>$msg,
                 'Announces'=>$Announces,
+                'subjects'=>$subjects,
+                'sbjcts'=>$sbjct,
+
 
             ]);
         }else{
@@ -79,6 +88,8 @@ class CFD_note_controller extends Controller
                 'Message'=>$msg,
                 'grades'=>null,
                 'Announces'=>$Announces,
+                'sbjcts'=>$sbjct,
+
             ]);
         }
     }

@@ -16,13 +16,16 @@ class Claims extends Controller
      */
     public function index()
     {
+        $sbjct =Subject::all();
         $subject=Subject::all();
         $Announces=Announcement::all()->take(-3);
-        $Claim=Claim::all();
+        $Claim=Claim::join('users','claims.user_id','=','users.id')->join('subjects','claims.subject_id','=','subjects.id')->get();
+
         $myClaim=Claim::all()->whereIn('user_id',\Auth::user()->id);
         if (\Auth::user()->role == 4)
         return view('Participant.myClaims')->with([
             'subjects'=>$subject,
+            'sbjcts'=>$sbjct,
             'Announces'=>$Announces,
             'myClaims'=>$myClaim,
         ]);
@@ -32,6 +35,8 @@ class Claims extends Controller
                 'Announces'=>$Announces,
                 'Claims'=>$Claim,
                 'myClaims'=>$myClaim,
+                'sbjcts'=>$sbjct,
+
             ]);
         elseif (\Auth::user()->role == 2 )
             return view('CFD.Claims')->with([
@@ -39,6 +44,8 @@ class Claims extends Controller
                 'Announces'=>$Announces,
                 'Claims'=>$Claim,
                 'myClaims'=>$myClaim,
+                'sbjcts'=>$sbjct,
+
             ]);
         else {abort('403');}
 

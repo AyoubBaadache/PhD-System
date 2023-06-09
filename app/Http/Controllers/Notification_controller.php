@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,11 +20,15 @@ class Notification_controller extends Controller
     {  $Announces=Announcement::all()->take(-3);
         $Announcements=Announcement::all()->reverse();
         $id=$Announcements->first()->user_id;
+        $sbjct =Subject::all();
+
         $user=User::find($id);
                 return view ("Announcements",[
                     'user' =>$user,
                     'Announcements' => $Announcements,
-                    'Announces'=>$Announces
+                    'Announces'=>$Announces,
+                    'sbjcts'=>$sbjct,
+
                 ]);
 
     }
@@ -55,19 +60,21 @@ class Notification_controller extends Controller
      */
     public  function show()
     {
+        $teacher = user::all() -> whereIn ( 'role' , 3)->count("id");
+        $user = user::all() -> count("id");
+        $participant = user::all() -> whereIn ( 'role' , 4)->count("id");
+        $subject = Subject::all() -> count("id");
         $Announces=Announcement::all()->take(-3);
-        switch (Auth::user()->role) {
-            case(0):
-                return view("Admin.AdminDash")->with(["Announces" => $Announces]);
-            case(1):
-                return view ("ViceDean.viceDeanDash")->with(["Announces" => $Announces]);
-            case(2):
-                return view ("CFD.DashCFD")->with(["Announces" => $Announces]);
-            case(3):
-                return view ("Teacher.TeacherDash")->with(["Announces" => $Announces]);
-            case(4):
-                return view ("Participant.ParticipantDash")->with(["Announces" => $Announces]);
-        };
+
+                return view("Admin.AdminDash")->with([
+                    "Announces" => $Announces,
+                    "participant" => $participant,
+                    "subject" => $subject,
+                    "teacher" => $teacher,
+                    "user" => $user,
+
+                    ]);
+
     }
 
     /**

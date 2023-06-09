@@ -2,7 +2,7 @@
 
 namespace Laravel\Jetstream\Http\Controllers\Livewire;
 use App\Models\Announcement;
-
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -17,10 +17,14 @@ class UserProfileController extends Controller
     public function show(Request $request)
     {
         $Announces = Announcement::all()->take(-4);
+        $sbjct =Subject::all();
+
         return view('profile.show', [
             'request' => $request,
             'user' => $request->user(),
-            'Announces' => $Announces
+            'Announces' => $Announces,
+                        'sbjcts'=>$sbjct,
+
         ]);
     }
 }

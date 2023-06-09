@@ -46,7 +46,7 @@
                             <tbody>
                             @foreach($f_grades as $g)
                                 <tr >
-                                    <td  id="NAME">{{$g->secret}}  </td>
+                                    <td  id="NAME">{{$g->secret_code}}  </td>
                                     <td  id="NAME">{{$g->Final_AVG}}  </td>
                                     <td  id="NAME">{{$g->status}}  </td>
 

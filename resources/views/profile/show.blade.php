@@ -34,10 +34,7 @@
     <h3> Profile</h3>
 @endsection
 
-@section('breadcrumb-items')
-    <li class="breadcrumb-item">Users</li>
-    <li class="breadcrumb-item active">Edit Profile</li>
-@endsection
+
 
 @section('content')
     <div class="container-fluid">

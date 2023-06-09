@@ -72,7 +72,6 @@ Route::resource("users/announcements",Notification_controller::class);
 
 /******************************** VD routes ***************************/
 Route::prefix('vd')->group(function () {
-    Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource('/code', Secret_generator_controller::class);
     Route::resource('/claims', Claims::class);
     Route::get('/claims/accept/{id}', [Claims::class, 'accept']);
@@ -99,14 +98,12 @@ Route::prefix('participant')->group(function () {
     Route::resource('/myclaims', Claims::class);
     Route::post('/myclaims/create', [Claims::class,'store']);
     Route::get('/home', [Notification_controller::class, 'show']);
-    Route::view('fgrades', 'Participant.fgrades')->name('fgrades');
+    Route::resource('/Ranking', G_calc_controller::class);
 });
 /********************************************************************************************/
 
 /******************************************** CFD routes ***********************************/
 Route::prefix('cfd')->group(function () {
-    Route::get('/home', [Notification_controller::class, 'show']);
-    route::get("/share_grades",[CFD_note_controller::class,'index']);
     route::get("/share_grades/{id}",[CFD_note_controller::class,'CFD_notes']);
     Route::resource('/Ranking', G_calc_controller::class);
     route::get("/Ranking/calc/f",[G_calc_controller::class,'f_calc']);

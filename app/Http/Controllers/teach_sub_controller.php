@@ -21,6 +21,7 @@ class teach_sub_controller extends Controller
         $subjects=Subject::all();
         $users=User::all()->where('role',3);//Teaches
         $Announces=Announcement::all()->take(-3);
+        $sbjct =Subject::all();
 
 
 
@@ -46,6 +47,8 @@ class teach_sub_controller extends Controller
             'teachers'=>$users,
             'sub'=>$subjects,
             'Announces'=>$Announces,
+            'sbjcts'=>$sbjct,
+
 
         ]));
     }

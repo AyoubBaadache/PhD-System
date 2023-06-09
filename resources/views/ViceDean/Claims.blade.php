@@ -38,8 +38,8 @@
 
                                     <tr>
                                     <td>{{$item->title}}</td>
-                                    <td>{{$item->subject_id}}</td>
-                                    <td>{{$item->user_id}}</td>
+                                        <td>{{$item->name}}</td>
+                                        <td>{{$item->lname}}</td>
                                     <td>{{$item->claim}}</td>
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->status}}</td>

@@ -68,10 +68,10 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h4>10,000</h4><span class="f-light">Teachers</span>
+                                        <h4>{{$teacher}}</h4><span class="f-light">Teachers</span>
                                     </div>
                                 </div>
-                                <div class="font-secondary f-w-500"><i class="icon-arrow-up icon-rotate me-1"></i><span>+50%</span></div>
+                                <div class="font-secondary f-w-500"><i class="icon-arrow-up icon-rotate me-1"></i><span>{{$teacher}}</span></div>
                             </div>
                         </div>
                     </div>
@@ -90,10 +90,10 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h4>7000</h4><span class="f-light">Participant</span>
+                                        <h4>{{$participant}}</h4><span class="f-light">Participant</span>
                                     </div>
                                 </div>
-                                <div class="font-warning f-w-500"><i class="icon-arrow-down icon-rotate me-1"></i><span>-20%</span></div>
+                                <div class="font-warning f-w-500"><i class="icon-arrow-down icon-rotate me-1"></i><span>{{$participant}}</span></div>
                             </div>
                         </div>
                     </div>
@@ -111,10 +111,10 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h4>4,200</h4><span class="f-light">Subjects</span>
+                                        <h4>{{$subject}}</h4><span class="f-light">Subjects</span>
                                     </div>
                                 </div>
-                                <div class="font-primary f-w-500"><i class="icon-arrow-up icon-rotate me-1"></i><span>+70%</span></div>
+                                <div class="font-primary f-w-500"><i class="icon-arrow-up icon-rotate me-1"></i><span>{{$subject}}</span></div>
                             </div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                                             <div class="user-box"><i class="font-primary" data-feather="user-plus"></i></div>
                                         </div>
                                         <div>
-                                            <h5 class="mb-1">178,098</h5><span class="font-primary d-flex align-items-center"><i class="icon-arrow-up icon-rotate me-1"> </i><span class="f-w-500">+30.89</span></span>
+                                            <h5 class="mb-1">{{$user}}</h5><span class="font-primary d-flex align-items-center"><i class="icon-arrow-up icon-rotate me-1"> </i><span class="f-w-500">--</span></span>
                                         </div>
                                     </li>
                                     <li>
@@ -149,7 +149,7 @@
                                             <div class="user-box"><i class="font-success" data-feather="user-minus"></i></div>
                                         </div>
                                         <div>
-                                            <h5 class="mb-1">178,098</h5><span class="font-danger d-flex align-items-center"><i class="icon-arrow-down icon-rotate me-1"></i><span class="f-w-500">-08.89</span></span>
+                                            <h5 class="mb-1">--</h5><span class="font-danger d-flex align-items-center"><i class="icon-arrow-down icon-rotate me-1"></i><span class="f-w-500">--</span></span>
                                         </div>
                                     </li>
                                 </ul>
