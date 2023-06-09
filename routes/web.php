@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Announcement_controller;
+use App\Http\Controllers\CFD_note_controller;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\Claims;
+use App\Http\Controllers\G_calc_controller;
 use App\Http\Controllers\MY_Controller;
 use App\Http\Controllers\Notes_controller;
 use App\Http\Controllers\Notification_controller;
@@ -104,6 +106,10 @@ Route::prefix('participant')->group(function () {
 /******************************************** CFD routes ***********************************/
 Route::prefix('cfd')->group(function () {
     Route::get('/home', [Notification_controller::class, 'show']);
+    route::get("/share_grades",[CFD_note_controller::class,'index']);
+    route::get("/share_grades/{id}",[CFD_note_controller::class,'CFD_notes']);
+    Route::resource('/Ranking', G_calc_controller::class);
+    route::get("/Ranking/calc/f",[G_calc_controller::class,'f_calc']);
     Route::resource('/claims', Claims::class);
     Route::get('/claims/accept/{id}', [Claims::class, 'accept']);
     Route::get('/claims/refuse/{id}', [Claims::class, 'refuse']);

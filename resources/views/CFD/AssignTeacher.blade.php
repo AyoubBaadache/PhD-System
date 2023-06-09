@@ -48,46 +48,10 @@
                                                 <select class="js-example-basic-single" name="phase" id="phase">
                                                     <option value="1">phase 1</option>
                                                     <option value="2">phase 2</option>
+                                                    <option id ="3" value="3">phase 3</option>
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline-primary">Save changes</button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add 3rd Teacher</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{url("cfd/assignTeachers/3rd")}}" method="post"  >
-                        @csrf
-                        @method('PUT')
-                        <div >
-                            <input type="hidden" name="subject_id1" id="subject_id1"  >
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3 row">
-                                            <label class="col-sm-4 col-form-label" for="teacher">Choose a teacher:</label>
-                                            <div class="col-sm-8">
-                                                <select class="js-example-basic-single" name="teacher_id" id="teacher_id1">
-                                                </select>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +71,6 @@
                 <i class="icon-alert"></i>
                 <p>You have  <b> exceeded </b> the copies numbers </p>
                 <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"><span class="bg-danger" aria-hidden="true"></span></button>
-
             </div>
         @endif
         <div class="row">
@@ -128,32 +91,39 @@
                                     <th>Copies </th>
                                     <th>Phase 2</th>
                                     <th>Copies</th>
+                                    <th>Phase 3</th>
+                                    <th>Copies</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody id="myTable" >
                                 @foreach($subjects as $subject)
-                                    <tr>
-                                        <td id="NAME">{{$subject['name']}} </td>
-                                        <td id="NAME">{{$subject['copies']}} </td>
-                                        <td id="#teacher_info">
+                                    <tr >
+                                        <td id="NAME">{{$subject['name']}}  </td>
+                                        <td  id="NAME">{{$subject['copies']}}  </td>
+                                        <td  id="#teacher_info">
                                             @foreach($subject['ph1'] as $teacher)
                                                 <div id="info_t">
                                                     {{$teacher->user_id}} copies :
                                                 </div>
+
                                             @endforeach
+
                                         </td>
-                                        <td id="#teacher_info">
+                                        <td  id="#teacher_info">
                                             @foreach($subject['c1'] as $copies)
                                                 <div id="info_t">
                                                     {{$copies->t_copies}}
                                                 </div>
+
                                             @endforeach
+
                                         </td>
+
                                         <td  id="NAME">
                                             @foreach($subject['ph2'] as $teacher)
                                                 <div>
-                                                    {{$teacher->user_id}} copies : {{$teacher->t_copies}}
+                                                    {{$teacher->user_id}} copies :
                                                 </div>
 
                                             @endforeach
@@ -163,14 +133,38 @@
                                                 <div id="info_t">
                                                     {{$copies->t_copies}}
                                                 </div>
+
                                             @endforeach
-                                        </td>
-                                        <td style="text-align:center" id="NAME">
-                                            <!-- Button trigger modal -->
-                                            <button class="btn btn-pill btn-light AssignTeacherBtn"  id="add" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add teacher</button>
-                                            <button class="btn btn-pill btn-outline-light AssignTeacherBtn1"  id="add" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}" data-bs-toggle="modal" data-bs-target="#exampleModal2" >3rd teacher</button>
 
                                         </td>
+                                        <td  id="NAME">
+                                            @foreach($subject['ph3'] as $teacher)
+                                                <div>
+                                                    {{$teacher->user_id}} copies :
+                                                </div>
+
+                                            @endforeach
+                                        </td>
+                                        <td  id="#teacher_info">
+                                            @foreach($subject['c3'] as $copies)
+                                                <div id="info_t">
+                                                    {{$copies->t_copies}}
+                                                </div>
+
+                                            @endforeach
+
+                                        </td>
+
+
+                                        <td  id="NAME">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" id="add" class="btn btn-pill  btn-light AssignTeacherBtn" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}" data-value3="{{$subject['c3']}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add teacher
+                                            </button>
+
+
+                                        </td>
+
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -181,6 +175,8 @@
                                     <th>Phase 1</th>
                                     <th>Copies </th>
                                     <th>Phase 2</th>
+                                    <th>Copies</th>
+                                    <th>Phase 3</th>
                                     <th>Copies</th>
                                     <th></th>
                                 </tr>
@@ -296,6 +292,16 @@
 
                 }
             )
+        })
+        $('#phase').change(function (){
+            var c=document.querySelector('#phase')
+            var inp=document.querySelector('#c_nbr')
+            console.log(c.value)
+            if (c.value==="3"){
+                inp.disabled = true;
+            }else {
+                inp.disabled = false;
+            }
         })
     </script>
 
