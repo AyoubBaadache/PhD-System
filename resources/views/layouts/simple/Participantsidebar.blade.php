@@ -24,7 +24,11 @@
                 <li class="sidebar-list" style="margin-top:100px "><a class="sidebar-link sidebar-title link-nav"
                                                                      href="{{  url('participant/Ranking')}}">
                         <span><i class="fa fa-graduation-cap" style="margin-right: 10px"></i></span>
-                        <span>Final Grades</span></a></li>
+                        <span>Ranking</span></a></li>
+                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
+                                                                      href="{{  url('participant/mygrades')}}">
+                        <span><i class="fa fa-graduation-cap" style="margin-right: 10px"></i></span>
+                        <span>My Grades</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
                                                                      href="{{  url('participant/myclaims')}}">
                         <span><i class="fa fa-warning" style="margin-right: 10px"></i></span>

@@ -39,7 +39,7 @@ class G_calc_controller extends Controller
 
         ]);
 else{
-    return view('Participant.fgrades',[
+    return view('Participant.Ranking',[
         'nt_nbr'=>$nt_nbr,
         'vd_nbr'=>$v_d,
         'fgrades'=>$fgrades,

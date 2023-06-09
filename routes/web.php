@@ -4,6 +4,7 @@ use App\Http\Controllers\Announcement_controller;
 use App\Http\Controllers\CFD_note_controller;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\Claims;
+use App\Http\Controllers\f_grades_P;
 use App\Http\Controllers\G_calc_controller;
 use App\Http\Controllers\MY_Controller;
 use App\Http\Controllers\Notes_controller;
@@ -97,6 +98,7 @@ Route::prefix('teacher')->group(function () {
 Route::prefix('participant')->group(function () {
     Route::resource('/myclaims', Claims::class);
     Route::post('/myclaims/create', [Claims::class,'store']);
+    route::get("/mygrades",[f_grades_P::class,'index']);
     Route::resource('/Ranking', G_calc_controller::class);
 });
 /********************************************************************************************/
