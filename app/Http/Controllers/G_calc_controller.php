@@ -25,7 +25,7 @@ class G_calc_controller extends Controller
         $Announces=Announcement::all()->take(-3);
         $nt_nbr=$sub*$secret;
         $f_grades=Final_grade::orderBy('Final_AVG','DESC')->join('secrets','final_grades.secret','=','secrets.id')->get();
-        $fgrades=Final_grade::orderBy('Final_AVG','DESC')->join('secrets','final_grades.secret','=','secrets.id')->get()->take(3);
+        $fgrades=Final_grade::orderBy('Final_AVG','DESC')->join('secrets','final_grades.secret','=','secrets.id')->join("users","secrets.user_id","=","users.id")->get()->take(3);
 
         $f_count=$f_grades->count();
 if(\Auth::user()->role == 3)

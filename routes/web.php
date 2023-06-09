@@ -97,7 +97,6 @@ Route::prefix('teacher')->group(function () {
 Route::prefix('participant')->group(function () {
     Route::resource('/myclaims', Claims::class);
     Route::post('/myclaims/create', [Claims::class,'store']);
-    Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource('/Ranking', G_calc_controller::class);
 });
 /********************************************************************************************/

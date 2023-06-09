@@ -32,11 +32,11 @@ class teach_sub_controller extends Controller
                 'name'=>$subject->name,
                 'copies'=>$subject->nbr_copies,
 
-                'ph1'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',1)->where('subject_id',$subject->id)->get('user_id'),
+                'ph1'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',1)->where('subject_id',$subject->id)->join('users','users_subjects.user_id','=','users.id')->get(),
                 'c1'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',1)->where('subject_id',$subject->id)->get('t_copies') ,
-                'ph2'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',2)->where('subject_id',$subject->id)->get('user_id'),
+                'ph2'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',2)->where('subject_id',$subject->id)->join('users','users_subjects.user_id','=','users.id')->get(),
                 'c2'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',2)->where('subject_id',$subject->id)->get('t_copies'),
-                'ph3'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',3)->where('subject_id',$subject->id)->get('user_id'),
+                'ph3'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',3)->where('subject_id',$subject->id)->join('users','users_subjects.user_id','=','users.id')->get(),
                 'c3'=>Subject::join('users_subjects','subjects.id','=','users_subjects.subject_id')->where('phase',3)->where('subject_id',$subject->id)->get('t_copies'),
             ];
         }

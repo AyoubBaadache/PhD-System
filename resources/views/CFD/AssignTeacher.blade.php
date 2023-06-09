@@ -104,7 +104,7 @@
                                         <td  id="#teacher_info">
                                             @foreach($subject['ph1'] as $teacher)
                                                 <div id="info_t">
-                                                    {{$teacher->user_id}} copies :
+                                                    {{$teacher->lname}} copies :
                                                 </div>
 
                                             @endforeach
@@ -123,7 +123,7 @@
                                         <td  id="NAME">
                                             @foreach($subject['ph2'] as $teacher)
                                                 <div>
-                                                    {{$teacher->user_id}} copies :
+                                                    {{$teacher->lname}} copies :
                                                 </div>
 
                                             @endforeach
@@ -140,7 +140,7 @@
                                         <td  id="NAME">
                                             @foreach($subject['ph3'] as $teacher)
                                                 <div>
-                                                    {{$teacher->user_id}} copies :
+                                                    {{$teacher->lname}} copies :
                                                 </div>
 
                                             @endforeach

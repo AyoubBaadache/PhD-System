@@ -32,7 +32,8 @@
                                 <table class="display" id="basic-2" >
                                     <thead>
                                     <tr>
-                                        <th>Secret</th>
+                                        <th>Fist name</th>
+                                        <th>Last name</th>
                                         <th>Final Avg</th>
                                         <th>Status</th>
                                     </tr>
@@ -40,7 +41,8 @@
                                     <tbody>
                                     @foreach($fgrades as $g)
                                         <tr >
-                                            <td  id="NAME">{{$g->secret_code}}  </td>
+                                            <td  id="NAME">{{$g->fname}}  </td>
+                                            <td  id="NAME">{{$g->lname}}  </td>
                                             <td  id="NAME">{{$g->Final_AVG}}  </td>
                                             <td  id="NAME">{{$g->status}}  </td>
 
@@ -49,7 +51,8 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Secret</th>
+                                        <th>Fist name</th>
+                                        <th>Last name</th>
                                         <th>Final Avg</th>
                                         <th>Status</th>
                                     </tr>
