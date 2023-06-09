@@ -64,6 +64,43 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add 3rd Teacher</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url("cfd/assignTeachers/3rd")}}" method="post"  >
+                        @csrf
+                        @method('PUT')
+                        <div >
+                            <input type="hidden" name="subject_id1" id="subject_id1"  >
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-4 col-form-label" for="teacher">Choose a teacher:</label>
+                                            <div class="col-sm-8">
+                                                <select class="js-example-basic-single" name="teacher_id" id="teacher_id1">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div class="container-fluid" style="margin-top: 120px">
         @if($errors->any())
             <div class="alert alert-danger inverse alert-dismissible fade show" role="alert">
@@ -130,7 +167,8 @@
                                         </td>
                                         <td style="text-align:center" id="NAME">
                                             <!-- Button trigger modal -->
-                                            <button class="btn btn-pill btn-light AssignTeacherBtn"  id="add" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}"data-bs-toggle="modal" data-bs-target="#exampleModal" >Add teacher</button>
+                                            <button class="btn btn-pill btn-light AssignTeacherBtn"  id="add" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add teacher</button>
+                                            <button class="btn btn-pill btn-outline-light AssignTeacherBtn1"  id="add" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}" data-bs-toggle="modal" data-bs-target="#exampleModal2" >3rd teacher</button>
 
                                         </td>
                                     </tr>
@@ -208,7 +246,50 @@
                         },
                         error:function(error)
                         {
-                            swal("You have exceeded the copies number", "You have exceeded the copies number", "error");
+                            console.log('error')
+                        },
+                    })
+
+                }
+            )
+        })
+        $(document).ready(function(){
+
+            $(".AssignTeacherBtn1").click(function (e){
+
+                    e.preventDefault();
+                    let subject_id=$(this).val();
+
+                    var dataValue = this.getAttribute("data-value");
+                    var dataValue2 = this.getAttribute("data-value2");
+
+                    console.log(subject_id);
+                    console.log(dataValue);
+                    console.log(dataValue2);
+                    $("#subject_id1").val(subject_id);
+                    $.ajax({
+                        url:"{{route('get_teacher')}}",
+                        type : "POST",
+                        dataType:'json',
+                        data : {
+                            dataValue,
+                            dataValue2,
+                            _token: '{!! csrf_token() !!}'
+                        },
+                        // handle a successful response
+                        success : function(response){
+                            console.log('success',response)
+                            jQuery('#teacher_id1').find('option')
+                                .remove()
+                                .end()
+                            jQuery.each(response,function(key,value){
+                                console.log(value);
+                                jQuery('#teacher_id1')
+                                    .append('<option  value='+ value.id +'>'+ value.fname+ '</option>')
+                            })
+                        },
+                        error:function(error)
+                        {
                             console.log('error')
                         },
                     })

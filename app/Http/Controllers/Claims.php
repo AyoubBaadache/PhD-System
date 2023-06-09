@@ -33,14 +33,14 @@ class Claims extends Controller
                 'Claims'=>$Claim,
                 'myClaims'=>$myClaim,
             ]);
-        elseif (Auth::user()->role == 2 )
-            return view('ViceDean.Claims')->with([
+        elseif (\Auth::user()->role == 2 )
+            return view('CFD.Claims')->with([
                 'subjects'=>$subject,
                 'Announces'=>$Announces,
                 'Claims'=>$Claim,
                 'myClaims'=>$myClaim,
             ]);
-        else abort(403);
+        else {abort('403');}
 
     }
 

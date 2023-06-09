@@ -22,7 +22,7 @@
                         <span><i class="fa fa-qrcode" style="margin-right: 10px"></i></span>
                         <span>Generate Code</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('vd/claims')}}">
-                        <span><i class="fa fa-qrcode" style="margin-right: 10px"></i></span>
+                        <span><i class="fa fa-warning" style="margin-right: 10px"></i></span>
                         <span>Claims</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav" href="{{  url('vd/announcementsList')}}">
                         <span><i class="fa fa-list" style="margin-right: 10px"></i></span>

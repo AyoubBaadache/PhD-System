@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid" style="margin-top: 100px">
+    <div class="container-fluid" style="margin-top: 150px">
         <div class="row widget-grid">
             <div class="col-xxl-4 col-sm-6 box-col-6">
                 <div class="card profile-box">

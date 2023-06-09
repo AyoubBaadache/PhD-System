@@ -1,4 +1,4 @@
-@extends('layouts.simple.Participantmaster')
+@extends('layouts.simple.CFDmaster')
 @section('title', 'Finale Grades')
 
 @section('css')
@@ -18,29 +18,52 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0 card-no-border">
-                        <a class="btn btn-pill btn-light" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="font-size: 15px;display: inline-block"><i data-feather="alert-triangle" style="height: 20px;margin-top: 4px; margin-right: 15px;align-items: center"></i> Make Claim</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="display" id="basic-9" >
                                 <thead>
                                 <tr>
+                                    <th>Title</th>
                                     <th>Subject</th>
-                                    <th>Average</th>
+                                    <th>Participant</th>
+                                    <th>Reason</th>
+                                    <th>Created at</th>
+                                    <th>Status</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>Edinburgh</td>
-
+                                    @foreach($Claims as $item)
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->subject_id}}</td>
+                                        <td>{{$item->user_id}}</td>
+                                        <td>{{$item->claim}}</td>
+                                        <td>{{$item->created_at}}</td>
+                                        <td>{{$item->status}}</td>
+                                        <td>
+                                            <ul class="action">
+                                                <li class="edit">
+                                                    <a class="btn btn-sm btn-transparent delete-item-btn acceptClaimBtn" href="claims/accept/{{$item->id}}" type="button" value="{{$item->id}}"><i class="fa fa-check"></i></a>
+                                                </li>
+                                                <li class="delete">
+                                                    <a class="btn btn-sm btn-transparent delete-item-btn refuseClaimBtn" href="claims/refuse/{{$item->id}}" type="button" value="{{$item->id}}" ><i class="fa fa-file-excel-o"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    @endforeach
                                 </tr>
 
                                 </tbody>
                                 <tfoot>
                                 <tr>
+                                    <th>Title</th>
                                     <th>Subject</th>
-                                    <th>Average</th>
+                                    <th>Participant</th>
+                                    <th>Reason</th>
+                                    <th>Created at</th>
+                                    <th>Status</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -51,39 +74,6 @@
             <!-- State saving Ends-->
         </div>
     </div>
-    <!--Claim Model-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Make Claim</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label> Title</label>
-                                <input class="form-control" type="text" placeholder="Title">
-                            </div>
-                            <div class="mb-3">
-                                <label> Details</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea4" rows="4"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card-footer text-end">
-                    <div class="col-sm-9 offset-sm-3">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                        <button class="btn btn-light" type="button" data-bs-dismiss="modal" aria-label="Close" value="Cancel">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Claim Model-->
 
 
 
@@ -95,4 +85,5 @@
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
     <script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
+
 @endsection

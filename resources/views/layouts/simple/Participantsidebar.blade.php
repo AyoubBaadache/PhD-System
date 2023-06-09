@@ -25,9 +25,13 @@
                         <span><i class="fa fa-home" style="margin-right: 10px"></i></span>
                         <span>Dashboard</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
-                                                                      href="{{  url('participant/fgrades')}}">
+                                                                     href="{{  url('participant/fgrades')}}">
                         <span><i class="fa fa-graduation-cap" style="margin-right: 10px"></i></span>
                         <span>Final Grades</span></a></li>
+                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
+                                                                     href="{{  url('participant/myclaims')}}">
+                        <span><i class="fa fa-warning" style="margin-right: 10px"></i></span>
+                        <span>My Claims</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
                                                                      href="{{  url('users/announcements')}}">
                         <span><i data-feather="globe" style="margin-right: 10px"></i></span>

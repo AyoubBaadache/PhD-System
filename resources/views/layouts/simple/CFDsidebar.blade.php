@@ -30,6 +30,10 @@
                         <span><i class="icofont icofont-teacher" style="margin-right: 10px"></i></span>
                         <span>Assign Teacher</span></a></li>
                 <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
+                                                                                                                                 href="{{  url('cfd/claims')}}">
+                        <span><i class="icofont icofont-warning" style="margin-right: 10px"></i></span>
+                        <span>Claims</span></a></li>
+                <li class="sidebar-list" style="margin-top:50px "><a class="sidebar-link sidebar-title link-nav"
                                                                      href="{{  url('users/announcements')}}">
                         <span><i data-feather="globe" style="margin-right: 10px"></i></span>
                         <span>Announcements</span></a></li>

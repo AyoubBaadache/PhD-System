@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use App\Models\Subject;
 use App\Models\User;
-use App\Models\User_subject;
 use App\Models\Users_subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -114,10 +113,14 @@ class teach_sub_controller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
-    }
+        $teacher = new Users_subject;
+        $teacher->subject_id = $request->input('subject_id1');
+        $teacher->user_id = $request->input('teacher_id');
+        $teacher->phase = 3;
+        $teacher->t_copies = 0;
+        return back();    }
 
     /**
      * Update the specified resource in storage.
