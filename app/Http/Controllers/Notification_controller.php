@@ -18,13 +18,9 @@ class Notification_controller extends Controller
      */
     public function index()
     {  $Announces=Announcement::all()->take(-3);
-        $Announcements=Announcement::all()->reverse();
-        $id=$Announcements->first()->user_id;
+        $Announcements=Announcement::join("users","announcements.user_id","=","users.id")->get()->reverse();
         $sbjct =Subject::all();
-
-        $user=User::find($id);
                 return view ("Announcements",[
-                    'user' =>$user,
                     'Announcements' => $Announcements,
                     'Announces'=>$Announces,
                     'sbjcts'=>$sbjct,

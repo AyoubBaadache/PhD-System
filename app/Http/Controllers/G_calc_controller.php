@@ -9,6 +9,7 @@ use App\Models\Subject;
 use App\Models\User;
 use App\Models\V_grade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class G_calc_controller extends Controller
 {
@@ -90,6 +91,14 @@ else{
                     ]
                 );
             }
+        }
+        if (!Announcement::where('user_id',Auth::user()->id)->exists()){
+        $announcement =new announcement;
+        $announcement->user_id = Auth::user()->id;
+        $announcement->title = "Final Grades";
+        $announcement->Content = "The Grades and Ranking are available, Check it out.";
+        $announcement->priority = "High";
+        $announcement->save();
         }
         return back();
     }

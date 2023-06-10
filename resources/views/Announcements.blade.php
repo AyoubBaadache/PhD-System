@@ -39,9 +39,9 @@
                                     <div class="card-body">
                                         <div class="new-users-social">
                                             <div class="media"><img class="rounded-circle image-radius m-r-15"
-                                                                    src="{{$user->profile_photo_url}}" alt="">
+                                                                    src="/storage/{{$Announcement->profile_photo_path}}" alt="">
                                                 <div class="media-body">
-                                                    <h6 class="mb-0 f-w-900">{{$user->fname}}  {{$user->lname}}</h6>
+                                                    <h6 class="mb-0 f-w-900">{{$Announcement->fname}}  {{$Announcement->lname}}</h6>
                                                     <i style="font-size: 12px">Priority:
                                                         @switch($Announcement->priority)
                                                             @case ("Urgent")
