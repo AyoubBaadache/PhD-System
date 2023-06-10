@@ -86,7 +86,6 @@ Route::prefix('vd')->group(function () {
 
 /*****************************************Teacher routes ************************************/
 Route::prefix('teacher')->group(function () {
-    Route::get('/home', [Notification_controller::class, 'show']);
     Route::resource('/grades', teachers_sub_list::class);
     Route::get('/final_grades/{id}', [Notes_controller::class,'index']);
     Route::post('/final_grades/store', [Notes_controller::class,'store']);
