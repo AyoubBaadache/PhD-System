@@ -641,6 +641,7 @@ class ComposerStaticInit75a8ba54e85b03986624ac4c2b08278e
         'App\\Http\\Controllers\\Notification_controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Notification_controller.php',
         'App\\Http\\Controllers\\Secret_generator_controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Secret_generator_controller.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
+        'App\\Http\\Controllers\\f_grades_P' => __DIR__ . '/../..' . '/app/Http/Controllers/f_grades_P.php',
         'App\\Http\\Controllers\\teach_sub_controller' => __DIR__ . '/../..' . '/app/Http/Controllers/teach_sub_controller.php',
         'App\\Http\\Controllers\\teachers_sub_list' => __DIR__ . '/../..' . '/app/Http/Controllers/teachers_sub_list.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

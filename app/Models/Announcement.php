@@ -13,6 +13,7 @@ class Announcement extends Model
         'title',
         'priority',
         'content',
+        'file',
         'user_id',
         'created_at',
         'updated_at',

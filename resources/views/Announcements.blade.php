@@ -66,6 +66,13 @@
                                                 <p>
                                                     {{$Announcement->Content}}
                                                 </p>
+                                                <i  style="font-size: 15px"> Link : <span style="font-size: 12px">
+                                                        @if($Announcement->file!=null)
+                                                           <a href = "/storage/Announcements/{{$Announcement->file}}" >{{$Announcement->file}}</a >
+                                                        @else
+                                                            No File Available
+                                                        @endif</span></i>
+
                                             </div>
                                         </div>
                                     </div>

@@ -22,9 +22,21 @@ class Announcement_controller extends Controller
 
     public function store(Request $request)
     {
-            $announcement =new announcement;
-            $announcement->user_id = Auth::user()->id;
-        $this->extracted($request, $announcement);
+        $announcement =new announcement;
+        $announcement->user_id = Auth::user()->id;
+        $announcement->title = $request->input('title');
+        $announcement->Content = $request->input('Content');
+        $announcement->priority = $request->input('priority');
+        if ($request->file!=null){
+            $destination='public/Announcements';
+            $file=$request->file('file');
+            $file_name=$file->getClientOriginalName();
+            $path=$request->file('file')->storeAs($destination,$file_name);
+            $announcement->file=$file_name;
+        }
+
+        $announcement->save();
+
         return back();
     }
 

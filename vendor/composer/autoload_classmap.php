@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\Notification_controller' => $baseDir . '/app/Http/Controllers/Notification_controller.php',
     'App\\Http\\Controllers\\Secret_generator_controller' => $baseDir . '/app/Http/Controllers/Secret_generator_controller.php',
     'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
+    'App\\Http\\Controllers\\f_grades_P' => $baseDir . '/app/Http/Controllers/f_grades_P.php',
     'App\\Http\\Controllers\\teach_sub_controller' => $baseDir . '/app/Http/Controllers/teach_sub_controller.php',
     'App\\Http\\Controllers\\teachers_sub_list' => $baseDir . '/app/Http/Controllers/teachers_sub_list.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

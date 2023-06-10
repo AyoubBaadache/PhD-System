@@ -69,7 +69,7 @@
                         <h5 class="modal-title">Add Announcement</h5>
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{url('/vd/announcementsList/create')}}" method="post">
+                    <form action="{{url('/vd/announcementsList/create')}}" method="post" enctype="multipart/form-data">
                         {!! csrf_field() !!}
 
                         <div class="card-body">
@@ -103,6 +103,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-3 col-form-label">Upload File</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="file" id="file" type="file">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="card-footer text-end">
