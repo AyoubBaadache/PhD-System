@@ -39,7 +39,7 @@
                                         <div class="mb-3 row">
                                             <label class="col-sm-4 col-form-label" for="teacher">Copies number:</label>
                                             <div class="col-sm-8">
-                                                <input class="form-control" type="number" name="c_nbr" id="c_nbr"  >
+                                                <input class="form-control" type="number" name="c_nbr" id="c_nbr"  required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -69,7 +69,8 @@
         @if($errors->any())
             <div class="alert alert-danger inverse alert-dismissible fade show" role="alert">
                 <i class="icon-alert"></i>
-                <p>You have  <b> exceeded </b> the copies numbers </p>
+                <p>{{$errors->first()}} </p>
+
                 <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"><span class="bg-danger" aria-hidden="true"></span></button>
             </div>
         @endif
@@ -158,10 +159,9 @@
 
                                         <td  id="NAME">
                                             <!-- Button trigger modal -->
-                                            <button type="button" id="add" class="btn btn-pill  btn-light AssignTeacherBtn" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}" data-value3="{{$subject['c3']}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add teacher
-                                            </button>
-
+                                            <button type="button" id="add" class="btn btn-pill  btn-light AssignTeacherBtn" value="{{$subject['id']}}" data-value="{{$subject['ph1']}}" data-value2="{{$subject['ph2']}}" data-value3="{{$subject['ph3']}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Add teacher
+                                                </button>
 
                                         </td>
 
@@ -212,8 +212,9 @@
                     e.preventDefault();
                     let subject_id=$(this).val();
 
-                    var dataValue = this.getAttribute("data-value");
-                    var dataValue2 = this.getAttribute("data-value2");
+                var dataValue = this.getAttribute("data-value");
+                var dataValue2 = this.getAttribute("data-value2");
+                var dataValue3 = this.getAttribute("data-value3");
 
                     console.log(subject_id);
                     console.log(dataValue);
@@ -226,6 +227,7 @@
                         data : {
                             dataValue,
                             dataValue2,
+                            dataValue3,
                             _token: '{!! csrf_token() !!}'
                         },
                         // handle a successful response
@@ -237,50 +239,6 @@
                             jQuery.each(response,function(key,value){
                                 console.log(value);
                                 jQuery('#teacher_id')
-                                    .append('<option  value='+ value.id +'>'+ value.fname+ '</option>')
-                            })
-                        },
-                        error:function(error)
-                        {
-                            console.log('error')
-                        },
-                    })
-
-                }
-            )
-        })
-        $(document).ready(function(){
-
-            $(".AssignTeacherBtn1").click(function (e){
-
-                    e.preventDefault();
-                    let subject_id=$(this).val();
-
-                    var dataValue = this.getAttribute("data-value");
-                    var dataValue2 = this.getAttribute("data-value2");
-
-                    console.log(subject_id);
-                    console.log(dataValue);
-                    console.log(dataValue2);
-                    $("#subject_id1").val(subject_id);
-                    $.ajax({
-                        url:"{{route('get_teacher')}}",
-                        type : "POST",
-                        dataType:'json',
-                        data : {
-                            dataValue,
-                            dataValue2,
-                            _token: '{!! csrf_token() !!}'
-                        },
-                        // handle a successful response
-                        success : function(response){
-                            console.log('success',response)
-                            jQuery('#teacher_id1').find('option')
-                                .remove()
-                                .end()
-                            jQuery.each(response,function(key,value){
-                                console.log(value);
-                                jQuery('#teacher_id1')
                                     .append('<option  value='+ value.id +'>'+ value.fname+ '</option>')
                             })
                         },

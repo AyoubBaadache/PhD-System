@@ -39,7 +39,7 @@
                                                 <td style="align-items: center; width: 550px">
                                                     <div class="col-sm-12">
                                                         <div hidden> {{$student->note}}</div>
-                                                    <input class="form-control" name="student_mark[]" value="{{$student->note}}">
+                                                    <input class="form-control" name="student_mark[]" value="{{$student->note}}" required>
                                                     </div>
                                                 </td>
                                             </tr>

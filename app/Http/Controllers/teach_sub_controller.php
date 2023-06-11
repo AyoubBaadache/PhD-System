@@ -55,11 +55,10 @@ class teach_sub_controller extends Controller
 
     public function get_teacher(Request $request){
 
-        //$subjects =$teacher->subjects()->get($teacher->id);
-
 
         $attributes = json_decode($request->dataValue, true);
         $atts = json_decode($request->dataValue2, true);
+        $attts=json_decode($request->dataValue3, true);
         $id =array();
         foreach ($attributes as $attribute){
             $id[]=$attribute['user_id'];
@@ -67,7 +66,11 @@ class teach_sub_controller extends Controller
         foreach ($atts as $att){
             $id[]=$att['user_id'];
         }
+        foreach ($attts as $at){
+            $id[]=$at['user_id'];
+        }
         $teachers=User::all()->where('role',3)->whereNotIn('id',$id);
+
         return \response()->json($teachers);
     }
 
@@ -85,31 +88,38 @@ class teach_sub_controller extends Controller
     public function store(Request $request)
     {
 
-        $data =new Users_subject;
+        $data = new Users_subject;
         $data->subject_id = $request->input('subject_id');
         $data->user_id = $request->input('teacher_id');
 
         $data->phase = $request->input('phase');
-        if ( $data->phase==3){
-            $data->t_copies =0;
-        }else{
+        if ($data->phase == 3) {
+            $data->t_copies = 0;
+
+
+        } else {
             $data->t_copies = $request->input('c_nbr');
 
         }
-        $sub_nbr=Subject::where('id',$data->subject_id)->get('nbr_copies');
-        $t_nbr=Users_subject::all()->
-        where('subject_id',$data->subject_id)->
-        where('phase',$data->phase)->sum('t_copies');
+        $sub_nbr = Subject::where('id', $data->subject_id)->get('nbr_copies');
+        $t_nbr = Users_subject::all()->
+        where('subject_id', $data->subject_id)->
+        where('phase', $data->phase)->sum('t_copies');
 
-        $s_nbr=$sub_nbr[0]->nbr_copies;
+        $s_nbr = $sub_nbr[0]->nbr_copies;
 
-        if ($data->t_copies+$t_nbr<=$s_nbr){
+        if ($data->t_copies + $t_nbr <= $s_nbr) {
+            if ($data->phase==3){
+                if (Users_subject::where('subject_id',$data->subject_id)->where('phase',3)->exists()){
+                    return back()->withErrors(['msg' => 'You can only assign 1 teacher to phase 3']);}
+            }
+
+
             $data->save();
         }
         else{
             return back()->withErrors(['msg' => 'You have exceeded the copies number']);
         }
-
 
 
         return back();
